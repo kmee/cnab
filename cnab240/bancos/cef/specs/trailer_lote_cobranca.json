@@ -25,7 +25,7 @@
     },
 
     "04.5": {
-      "nome": "vazio1",
+      "nome": "cnab_exclusivo_04dot5",
       "posicao_inicio": 9,
       "posicao_fim": 17,
       "formato": "alfa",
@@ -43,8 +43,7 @@
       "nome": "cobrancasimples_quantidade_titulos",
       "posicao_inicio": 24,
       "posicao_fim": 29,
-      "formato": "num",
-      "default": 0
+      "formato": "num"
     },
 
     "07.5": {
@@ -52,32 +51,28 @@
       "posicao_inicio": 30,
       "posicao_fim": 46,
       "formato": "num",
-      "decimais": 2,
-      "default": 0
+      "decimais": 2
     },
 
     "08.5": {
       "nome": "cobrancaCaucionada_quantidade_titulos",
       "posicao_inicio": 47,
       "posicao_fim": 52,
-      "formato": "num",
-      "default": 1
+      "formato": "alfa"
     },
 
     "09.5": {
       "nome": "cobrancaCaucionada_valor_titulos",
       "posicao_inicio": 53,
       "posicao_fim": 69,
-      "formato": "num",
-      "default": 0
+      "formato": "alfa"
     },
 
     "10.5": {
       "nome": "total_desc_titulosCobranca",
       "posicao_inicio": 70,
       "posicao_fim": 75,
-      "formato": "num",
-      "default": 0
+      "formato": "num"
     },
 
     "11.5": {
@@ -85,12 +80,11 @@
       "posicao_inicio": 76,
       "posicao_fim": 92,
       "formato": "num",
-      "decimais": 2,
-      "default": 0
+      "decimais": 2
     },
 
     "12.5": {
-      "nome": "vazio2",
+      "nome": "FebrabanExclusivo_12dot5",
       "posicao_inicio": 93,
       "posicao_fim": 123,
       "formato": "alfa",
@@ -98,7 +92,7 @@
     },
 
     "13.5": {
-      "nome": "vazio3",
+      "nome": "FebrabanExclusivo_13dot5",
       "posicao_inicio": 124,
       "posicao_fim": 240,
       "formato": "alfa",

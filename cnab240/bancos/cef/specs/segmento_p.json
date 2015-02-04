@@ -25,11 +25,10 @@
     },
 
     "04.3P": {
-      "nome": "servico_numero_registro",
+      "nome": "servico_numeroRegistro",
       "posicao_inicio": 9,
       "posicao_fim": 13,
-      "formato": "num",
-      "default": 1
+      "formato": "num"
     },
 
     "05.3P": {
@@ -41,7 +40,7 @@
     },
 
     "06.3P": {
-      "nome": "vazio1",
+      "nome": "cnab_exclusivo_campo06dot3",
       "posicao_inicio": 15,
       "posicao_fim": 15,
       "formato": "alfa",
@@ -49,22 +48,21 @@
     },
 
     "07.3P": {
-      "nome": "servico_codigo_movimento",
+      "nome": "servico_codigoMovimento",
       "posicao_inicio": 16,
       "posicao_fim": 17,
-      "formato": "num",
-      "default": 1
+      "formato": "num"
     },
 
     "08.3P": {
-      "nome": "cedente_agencia",
+      "nome": "cedente_agencia_cod",
       "posicao_inicio": 18,
       "posicao_fim": 22,
       "formato": "num"
     },
 
     "09.3P": {
-      "nome": "cedente_agencia_dv",
+      "nome": "cedente_agencia_conta_dv",
       "posicao_inicio": 23,
       "posicao_fim": 23,
       "formato": "alfa"
@@ -74,12 +72,11 @@
       "nome": "cedente_codigoCedente",
       "posicao_inicio": 24,
       "posicao_fim": 29,
-      "formato": "num",
-      "default": 1
+      "formato": "num"
     },
     
     "11.3P": {
-      "nome": "vazio4",
+      "nome": "cedente_caixa_exclusivo_campo11dot3-",
       "posicao_inicio": 30,
       "posicao_fim": 37,
       "formato": "num",
@@ -87,7 +84,7 @@
     },
 
     "12.3P": {
-      "nome": "vazio5",
+      "nome": "caixa_exclusivo_campo12dot3-",
       "posicao_inicio": 38,
       "posicao_fim": 40,
       "formato": "num",
@@ -105,24 +102,21 @@
       "nome": "carteira_titulo",
       "posicao_inicio": 43,
       "posicao_fim": 57,
-      "formato": "num",
-      "default": 1
+      "formato": "num"
     },
 
     "14.3P": {
       "nome": "cobranca_carteiraCod",
       "posicao_inicio": 58,
       "posicao_fim": 58,
-      "formato": "num",
-      "default": 1
+      "formato": "num"
     },
 
     "15.3P": {
       "nome": "cobranca_cadastramento",
       "posicao_inicio": 59,
       "posicao_fim": 59,
-      "formato": "num",
-      "default": 1
+      "formato": "num"
     },
 
     "16.3P": {
@@ -137,16 +131,14 @@
       "nome": "cobranca_emissaoBloqueto",
       "posicao_inicio": 61,
       "posicao_fim": 61,
-      "formato": "num",
-      "default": 1
+      "formato": "num"
     },
 
     "18.3P": {
       "nome": "cobranca_distribuicaoBloqueto",
       "posicao_inicio": 62,
       "posicao_fim": 62,
-      "formato": "alfa",
-      "default": "A"
+      "formato": "alfa"
     },
 
     "19.3P": {
@@ -157,7 +149,7 @@
     },
 
     "19.3.2P": {
-      "nome": "vazio7",
+      "nome": "caixa_exclusivo_campo19dot3dot2P",
       "posicao_inicio": 74,
       "posicao_fim": 77,
       "formato": "alfa",
@@ -192,7 +184,7 @@
       "posicao_inicio": 106,
       "posicao_fim": 106,
       "formato": "alfa",
-      "default": "0"
+      "default": 0
     },
 
     "24.3P": {
@@ -224,14 +216,14 @@
     },
 
     "28.3P": {
-      "nome": "juros_mora_data",
+      "nome": "juros_data_mora",
       "posicao_inicio": 119,
       "posicao_fim": 126,
       "formato": "num"
     },
 
     "29.3P": {
-      "nome": "juros_mora_taxa_dia",
+      "nome": "juros_mora",
       "posicao_inicio": 127,
       "posicao_fim": 141,
       "formato": "num",
@@ -242,8 +234,7 @@
       "nome": "desconto1_cod",
       "posicao_inicio": 142,
       "posicao_fim": 142,
-      "formato": "num",
-      "default": 1
+      "formato": "num"
     },
 
     "31.3P": {
@@ -278,7 +269,7 @@
     },
 
     "35.3P": {
-      "nome": "identificacao_titulo",
+      "nome": "cedente_identificacaoTitulo",
       "posicao_inicio": 196,
       "posicao_fim": 220,
       "formato": "alfa"
@@ -320,15 +311,15 @@
     },
 
     "41.3P": {
-      "nome": "vazio11",
+      "nome": "caixa_exclusivo_campo41dot3P",
       "posicao_inicio": 230,
-      "posicao_fim": 239,
+      "posicao_fim": 229,
       "formato": "num",
       "default": 0
     },
 
     "42.3P": {
-      "nome": "vazio12",
+      "nome": "cnab_exclusivo_campo42dot3P",
       "posicao_inicio": 240,
       "posicao_fim": 240,
       "formato": "alfa",
