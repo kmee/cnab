@@ -92,7 +92,7 @@
     },
 
     "12.1": {
-      "nome": "cedente_agencia_cod",
+      "nome": "cedente_agencia",
       "posicao_inicio": 54,
       "posicao_fim": 58,
       "formato": "num"
@@ -106,7 +106,7 @@
     },
 
     "14.1": {
-      "nome": "cedente_cod_cedente",
+      "nome": "cedente_codigo_codCedente",
       "posicao_inicio": 60,
       "posicao_fim": 65,
       "formato": "num"
@@ -149,14 +149,14 @@
     },
 
     "20.1": {
-      "nome": "controleCobranca_remessaRetorno",
+      "nome": "arquivo_sequencia",
       "posicao_inicio": 184,
       "posicao_fim": 191,
       "formato": "num"
     },
 
     "21.1": {
-      "nome": "controleCobranca_dataGravacao",
+      "nome": "controlecob_data_gravacao",
       "posicao_inicio": 192,
       "posicao_fim": 199,
       "formato": "num"
