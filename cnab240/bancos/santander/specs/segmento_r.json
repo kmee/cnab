@@ -108,7 +108,7 @@
       "posicao_inicio": 75,
       "posicao_fim": 89,
       "formato": "num",
-      "default": 0
+      "decimais": 2
     },
 
     "15.3R": {
