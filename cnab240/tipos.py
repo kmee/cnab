@@ -239,6 +239,10 @@ class Arquivo(object):
             header = self.banco.registros.HeaderLoteCobranca(**header)
             trailer = self.banco.registros.TrailerLoteCobranca()
             lote_cobranca = Lote(self.banco, header, trailer)
+
+            #Para conseguir inserir todos os eventos de cobrança em um unico lote precisa informar o código do serviço
+            lote_cobranca.header.servico_servico = codigo_evento
+
             self.adicionar_lote(lote_cobranca)
 
             #if header.controlecob_numero is None:
@@ -250,6 +254,7 @@ class Arquivo(object):
             #if header.controlecob_data_gravacao is None:
             if "controlecob_data_gravacao" not in dir(header) or header.controlecob_data_gravacao is None:
                 header.controlecob_data_gravacao = self.header.arquivo_data_de_geracao
+
 
         lote_cobranca.adicionar_evento(evento)
         # Incrementar numero de registros no trailer do arquivo
