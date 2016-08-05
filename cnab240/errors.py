@@ -11,10 +11,20 @@ class AtribuicaoCampoError(Cnab240Error):
     def __init__(self, campo, valor):
         self.campo = campo
         self.valor = valor
-        super(AtribuicaoCampoError, self).__init__(self)
+        super(AtribuicaoCampoError, self).__init__()
 
     def __unicode__(self):
         return u'campo:{0} formato:{1} decimais:{2} digitos:{3} - valor:{4}'.\
+            format(
+                self.campo.nome,
+                self.campo.formato,
+                self.campo.decimais,
+                self.campo.digitos,
+                repr(self.valor),
+            )
+
+    def __str__(self):
+        return 'campo:{0} formato:{1} decimais:{2} digitos:{3} - valor:{4}'.\
             format(
                 self.campo.nome,
                 self.campo.formato,
@@ -41,7 +51,7 @@ class FaltandoArgsError(Cnab240Error):
 
     def __init__(self, args_faltantes):
         self.args_faltantes = args_faltantes
-        super(FaltandoArgsError, self).__init__(self)
+        super(FaltandoArgsError, self).__init__()
 
     def __unicode__(self):
         return (u'Os seguintes kwargs sao obrigatorios e nao foram '

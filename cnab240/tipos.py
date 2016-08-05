@@ -216,7 +216,7 @@ class Arquivo(object):
     def lotes(self):
         return self._lotes
 
-    def incluir_cobranca(self, **kwargs):
+    def incluir_cobranca(self, header, **kwargs):
         # 1 eh o codigo de cobranca
         codigo_evento = 1
         evento = Evento(self.banco, codigo_evento)
@@ -234,17 +234,17 @@ class Arquivo(object):
         lote_cobranca = self.encontrar_lote(codigo_evento)
 
         if lote_cobranca is None:
-            header = self.banco.registros.HeaderLoteCobranca(**self.header.todict())
+            header = self.banco.registros.HeaderLoteCobranca(**header)
             trailer = self.banco.registros.TrailerLoteCobranca()
             lote_cobranca = Lote(self.banco, header, trailer)
             self.adicionar_lote(lote_cobranca)
 
-            if header.controlecob_numero is None:
+            if "controlecob_numero" not in dir(header):
                 header.controlecob_numero = int('{0}{1:02}'.format(
                     self.header.arquivo_sequencia,
                     lote_cobranca.codigo))
 
-            if header.controlecob_data_gravacao is None:
+            if "controlecob_data_gravacao" not in dir(header):
                 header.controlecob_data_gravacao = self.header.arquivo_data_de_geracao
 
         lote_cobranca.adicionar_evento(evento)
