@@ -6,7 +6,7 @@
       "posicao_inicio": 1,
       "posicao_fim": 3,
       "formato": "num",
-      "default": 33
+      "default": 1
     },
 
     "02.3Q": {
@@ -154,7 +154,7 @@
     },
 
     "20.3Q": {
-      "nome": "carne_identificador",
+      "nome": "codigo_compensacao",
       "posicao_inicio": 210,
       "posicao_fim": 212,
       "formato": "num",
@@ -162,32 +162,15 @@
     },
 
     "21.3Q": {
-      "nome": "parcela_numero",
+      "nome": "nosso_numero",
       "posicao_inicio": 213,
-      "posicao_fim": 215,
-      "formato": "num",
-      "default": 0
+      "posicao_fim": 232,
+      "formato": "alfa"
     },
 
     "22.3Q": {
-      "nome": "parcela_quantidade",
-      "posicao_inicio": 216,
-      "posicao_fim": 218,
-      "formato": "num",
-      "default": 0
-    },
-
-    "23.3Q": {
-      "nome": "plano_numero",
-      "posicao_inicio": 219,
-      "posicao_fim": 221,
-      "formato": "num",
-      "default": 0
-    },
-
-    "24.3Q": {
       "nome": "vazio2",
-      "posicao_inicio": 222,
+      "posicao_inicio": 233,
       "posicao_fim": 240,
       "formato": "alfa",
       "default": ""
