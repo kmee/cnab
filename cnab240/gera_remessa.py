@@ -34,25 +34,25 @@ class GeraCNAB240():
         self.tipo_servico = 1
         self.layout_lote = 40
         self.numero_convenio = None
-        self.cobranca_cedente = None
+        self.cobranca_cedente = 14
         self.numero_carteira = None
         self.variacao_carteira = None
         self.mensagem1 = ''
         self.mensagem2 = ''
         self.numero_remessa_retorno = None
-        self.data_gravacao = None
+        self.data_gravacao = 0
         self.data_cretido = 0
 
         self.tipo_regP = 3
         self.sequencial_lote = 1
         self.segmentoP = 'P'
-        self.cod_movimento_remessa = None
+        self.cod_movimento_remessa = 1
         self.identificacao_titulo = None
-        self.codigo_carteira = None
-        self.forma_cadastro = None
-        self.tipo_doc = None
-        self.ident_emissor_boleto = None
-        self.ident_distribuicao = None
+        self.codigo_carteira = 1
+        self.forma_cadastro = 1
+        self.tipo_doc = '1'
+        self.ident_emissor_boleto = 1
+        self.ident_distribuicao = '1'
         self.numero_doc_cobranca = None
         self.data_vencimento = None
         self.valor = None
@@ -72,9 +72,9 @@ class GeraCNAB240():
         self.identificacao_titulo_empresa = None
         self.codigo_protesto = 0
         self.dias_protesto = 0
-        self.codigo_baixa = None
+        self.codigo_baixa = 0
         self.dias_baixa = 0
-        self.codigo_moeda = 0
+        self.codigo_moeda = 9
         self.numero_contrato = 0
 
         self.tipo_inscricaoQ = None
@@ -84,11 +84,11 @@ class GeraCNAB240():
         self.bairroQ = None
         self.cepQ = None
         self.sufixo_cepQ = None
-        self.cidadeQ = None
-        self.ufQ = None
-        self.tipo_inscricao_sacador = None
-        self.numero_inscricao_sacador = None
-        self.nome_sacador = None
+        self.cidadeQ = ''
+        self.ufQ = ''
+        self.tipo_inscricao_sacador = 0
+        self.numero_inscricao_sacador = 0
+        self.nome_sacador = ''
         self.codigo_compensacao = 0
 
         self.cod_desconto2 = 0
@@ -142,7 +142,7 @@ class GeraCNAB240():
 
     def gera_header_lote(self):
         f = open(os.path.join(self.path, self.nome_arquivo), 'a')
-        string_hearder_lote = '{0:0>3}{1:0>4}{2}{3}{4:0>2}{5: >2}{6:0>3}{7}{8}{9:0>15}{10:0>9}{11:0>4}{12:0>2}{13:0>3}{14: >2}{15:0>5}{16}{17:0>12}{18}{19}{20: <30}{21: >40}{22: >40}{23:0>8}{24:0>8}{25:0>8}' \
+        string_hearder_lote = '{0:0>3}{1:0>4}{2}{3}{4:0>2}{5: >2}{6:0>3}{7}{8}{9:0>15}{10:0>9}{11:0>4}{12:0>2}{13:0>3}{14: >2}{15:0>5}{16}{17:0>12}{18}{19}{20: <30}{21: <40}{22: <40}{23:0>8}{24:0>8}{25:0>8}' \
                          '{26: >33}\n'.format(self.codigo_banco, self.lote, self.tipo_reg, '', self.tipo_operador, self.tipo_servico, self.layout_lote, ' ', self.tipo_inscricao, self.numero_inscricao, self.numero_convenio,
                                               self.cobranca_cedente, self.numero_carteira, self.variacao_carteira, '', self.agencia, self.agencia_dv, self.numero_conta, self.conta_dv, self.dv, self.nome_empresa,
                                               self.mensagem1, self.mensagem2, self.numero_remessa_retorno, self.data_gravacao, self.data_cretido, '')
@@ -151,8 +151,8 @@ class GeraCNAB240():
 
     def gera_segmento_p(self):
         f = open(os.path.join(self.path, self.nome_arquivo), 'a')
-        string_segmento_p = '{0:0>3}{1:0>4}{2}{3:0>5}{4}{5}{6:0>2}{7:0>5}{8}{9:0>12}{10}{11}{12: >20}{13}{14}{15}{16}{17}{18: >15}{19:0>8}{20:0>15}{21:0>5}{22}{23:0>2}{24}{25:0>8}' \
-                         '{26}{27:0>8}{28:0>15}{29}{30:0>8}{31:0>15}{32:0>15}{33:0>15}{34: >25}{35}{36:0>2}{37}{38: >3}{39:0>2}{40:0>10}' \
+        string_segmento_p = '{0:0>3}{1:0>4}{2}{3:0>5}{4}{5}{6:0>2}{7:0>5}{8}{9:0>12}{10}{11}{12: <20}{13}{14}{15}{16}{17}{18: >15}{19:0>8}{20:0>15}{21:0>5}{22}{23:0>2}{24}{25:0>8}' \
+                         '{26}{27:0>8}{28:0>15}{29}{30:0>8}{31:0>15}{32:0>15}{33:0>15}{34: <25}{35}{36:0>2}{37}{38: >3}{39:0>2}{40:0>10}' \
                               '{41}\n'.format(self.codigo_banco, self.lote, self.tipo_regP, self.sequencial_lote, self.segmentoP, ' ', self.cod_movimento_remessa, self.agencia, self.agencia_dv, self.numero_conta, self.conta_dv,
                                               self.dv, self.identificacao_titulo, self.codigo_carteira,self.forma_cadastro, self.tipo_doc, self.ident_emissor_boleto, self.ident_distribuicao, self.numero_doc_cobranca, self.data_vencimento,
                                               '{:.2f}'.format(self.valor).replace('.', ''), self.agencia_cobranca, self.agencia_cobranca_dv, self.especie, self.aceita, self.data_emissao, self.codigo_juros_mora, self.data_juros_mora,
