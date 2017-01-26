@@ -193,19 +193,19 @@ class GeraCNAB240():
         f.close()
 
 teste_remessa = GeraCNAB240(os.getcwd(), 6958, 9904)
-
+# header_arquivo
 teste_remessa.tipo_inscricao = 2
 teste_remessa.numero_inscricao = 19686471000123
 teste_remessa.agencia_dv = '2'
 teste_remessa.nome_empresa = 'U.M. TECNOLOGIA LTDA EPP'
 teste_remessa.layout = 80
-
+# header_lote
 teste_remessa.numero_convenio = 2751668
 teste_remessa.numero_carteira = 17
 teste_remessa.variacao_carteira = 19
 teste_remessa.numero_remessa_retorno = 1
 teste_remessa.data_gravacao = datetime.now().strftime('%d%m%Y')
-
+# segmento_p
 teste_remessa.identificacao_titulo = '{0}{1:0>10}'.format(teste_remessa.numero_convenio, 1)
 teste_remessa.numero_doc_cobranca = '2'
 teste_remessa.data_vencimento = (datetime.now() + timedelta(5)).strftime('%d%m%Y')
@@ -213,7 +213,7 @@ teste_remessa.valor = 1.0
 teste_remessa.especie = 18
 teste_remessa.data_emissao = datetime.now().strftime('%d%m%Y')
 teste_remessa.identificacao_titulo_empresa = 10
-
+# segmento_q
 teste_remessa.tipo_inscricaoQ = 1
 teste_remessa.numero_inscricaoQ = 36517608800
 teste_remessa.nomeQ = 'THIAGO GOMES FREITAS'
@@ -223,9 +223,11 @@ teste_remessa.cepQ = 12236
 teste_remessa.sufixo_cepQ = 020
 teste_remessa.cidadeQ = 'SJC'
 teste_remessa.ufQ = 'SP'
+# segmento_r
 
+# trailer_lote
 teste_remessa.qtd_registro_lote = 5
-
+# trailer_arquivo
 teste_remessa.qtd_lote_arquivo = 1
 teste_remessa.qtd_registro_arquivo = 7
 
