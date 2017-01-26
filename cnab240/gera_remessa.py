@@ -27,6 +27,7 @@ class GeraCNAB240():
         self.numero_sequencial = 0
         self.layout = 83
         self.densidade = 0
+
         self.lote = 1
         self.tipo_reg = 1
         self.tipo_operador = 'R'
@@ -141,8 +142,54 @@ class GeraCNAB240():
 
     def gera_header_lote(self):
         f = open(os.path.join(self.path, self.nome_arquivo), 'a')
-        string_hearder = '{0:0>3}{1:0>4}{2}{3: >9}{4}{5:0>14}{6: >9}{7: >4}{8: >2}{9: >3}{10: >2}{11:0>5}{12}{13:0>12}{14}{15}{16: <30}{17: <30}{18: >10}{19}{20}{21}{22:0>6}{23:0>3}{24:0>5}{25: >20}{26: >20}' \
-                         '{27: >29}\n'.format(self.codigo_banco, self.lote_servico, self.tipo_registro, '', self.tipo_inscricao, self.numero_inscricao, '', '', '', '', '', self.agencia, self.agencia_dv, self.numero_conta,
-                                              self.conta_dv, self.dv, self.nome_empresa, self.nome_banco, '', self.codigo_remessa_retorno, data_now, hora_now, self.numero_sequencial, self.layout, self.densidade, '', '', '')
-        f.write(string_hearder)
+        string_hearder_lote = '{0:0>3}{1:0>4}{2}{3}{4:0>2}{5: >2}{6:0>3}{7}{8}{9:0>15}{10:0>9}{11:0>4}{12:0>2}{13:0>3}{14: >2}{15:0>5}{16}{17:0>12}{18}{19}{20: <30}{21: >40}{22: >40}{23:0>8}{24:0>8}{25:0>8}' \
+                         '{26: >33}\n'.format(self.codigo_banco, self.lote, self.tipo_reg, '', self.tipo_operador, self.tipo_servico, self.layout_lote, ' ', self.tipo_inscricao, self.numero_inscricao, self.numero_convenio,
+                                              self.cobranca_cedente, self.numero_carteira, self.variacao_carteira, '', self.agencia, self.agencia_dv, self.numero_conta, self.conta_dv, self.dv, self.nome_empresa,
+                                              self.mensagem1, self.mensagem2, self.numero_remessa_retorno, self.data_gravacao, self.data_cretido, '')
+        f.write(string_hearder_lote)
         f.close()
+
+    def gera_segmento_p(self):
+        f = open(os.path.join(self.path, self.nome_arquivo), 'a')
+        string_segmento_p = '{0:0>3}{1:0>4}{2}{3:0>5}{4}{5}{6:0>2}{7:0>5}{8}{9:0>12}{10}{11}{12: >20}{13}{14}{15}{16}{17}{18: >15}{19:0>8}{20:0>15}{21:0>5}{22}{23:0>2}{24}{25:0>8}' \
+                         '{26}{27:0>8}{28:0>15}{29}{30:0>8}{31:0>15}{32:0>15}{33:0>15}{34: >25}{35}{36:0>2}{37}{38: >3}{39:0>2}{40:0>10}' \
+                              '{41}\n'.format(self.codigo_banco, self.lote, self.tipo_regP, self.sequencial_lote, self.segmentoP, ' ', self.cod_movimento_remessa, self.agencia, self.agencia_dv, self.numero_conta, self.conta_dv,
+                                              self.dv, self.identificacao_titulo, self.codigo_carteira,self.forma_cadastro, self.tipo_doc, self.ident_emissor_boleto, self.ident_distribuicao, self.numero_doc_cobranca, self.data_vencimento,
+                                              '{:.2f}'.format(self.valor).replace('.', ''), self.agencia_cobranca, self.agencia_cobranca_dv, self.especie, self.aceita, self.data_emissao, self.codigo_juros_mora, self.data_juros_mora,
+                                              '{:.2f}'.format(self.valor_juros_mora).replace('.', ''), self.cod_desconto1, self.data_desconto1, '{:.2f}'.format(self.valor_desconto1).replace('.', ''),
+                                              '{:.2f}'.format(self.valor_IOF).replace('.', ''), '{:.2f}'.format(self.valor_abatimento).replace('.', ''),
+                                              self.identificacao_titulo_empresa, self.codigo_protesto, self.dias_protesto, self.codigo_baixa, self.dias_baixa, self.codigo_moeda, self.numero_contrato, ' ')
+        f.write(string_segmento_p)
+        f.close()
+
+    def gera_segmento_q(self):
+        f = open(os.path.join(self.path, self.nome_arquivo), 'a')
+        string_segmento_q = '{0:0>3}{1:0>4}{2}{3:0>5}{4}{5}{6:0>2}{7}{8:0>15}{9: <40}{10: <40}{11: <15}{12:0>5}{13:0>3}{14: <15}{15: >2}{16}{17:0>15}{18: <40}{19:0>3}{20: >20}' \
+                              '{21: >8}\n'.format(self.codigo_banco, self.lote, self.tipo_regP, self.sequencial_lote+1, 'Q', ' ', self.cod_movimento_remessa, self.tipo_inscricaoQ, self.numero_inscricaoQ, self.nomeQ, self.enderecoQ, self.bairroQ,
+                                              self.cepQ, self.sufixo_cepQ, self.cidadeQ,self.ufQ, self.tipo_inscricao_sacador, self.numero_inscricao_sacador, self.nome_sacador, self.codigo_compensacao, '', '')
+        f.write(string_segmento_q)
+        f.close()
+
+    def gera_segmento_r(self):
+        f = open(os.path.join(self.path, self.nome_arquivo), 'a')
+        string_segmento_q = '{0:0>3}{1:0>4}{2}{3:0>5}{4}{5}{6:0>2}{7}{8:0>8}{9:0>15}{10}{11:0>8}{12:0>15}{13}{14:0>8}{15:0>15}{16: >10}{17: <40}{18: <40}{19: >20}{20:0>8}{21:0>3}{22:0>5}{23}{24:0>12}{25}{26}{27}' \
+                              '{28: >9}\n'.format(self.codigo_banco, self.lote, self.tipo_regP, self.sequencial_lote+2, 'R', ' ', self.cod_movimento_remessa, self.cod_desconto2, self.data_desconto2,
+                                                  '{:.2f}'.format(self.valor_desconto2).replace('.', ''), self.cod_desconto3, self.data_desconto3, '{:.2f}'.format(self.valor_desconto3).replace('.', ''), self.cod_multa, self.data_multa,
+                                                  '{:.2f}'.format(self.valor_multa).replace('.', ''), self.info_sacado, self.mensagem3, self.mensagem4, '', self.codigo_ocorrencia_sacado, self.cod_banco_debito, self.cod_agencia_debito,
+                                                  self.cod_agencia_debito_dv, self.cod_conta_debito, self.cod_conta_debito_dv, self.dv_debito, self.aviso_debito, '')
+        f.write(string_segmento_q)
+        f.close()
+
+    def gera_trailer_lote(self):
+        f = open(os.path.join(self.path, self.nome_arquivo), 'a')
+        string_segmento_q = '{0:0>3}{1:0>4}{2}{3: >9}{4:0>6}{5: >217}\n'.format(self.codigo_banco, self.lote, self.tipo_registro_TL, '', self.qtd_registro_lote, '')
+        f.write(string_segmento_q)
+        f.close()
+
+    def gera_trailer_arquivo(self):
+        f = open(os.path.join(self.path, self.nome_arquivo), 'a')
+        string_segmento_q = '{0:0>3}{1:0>4}{2}{3: >9}{4:0>6}{5:0>6}{6:0>6}{7: >205}\n'.format(self.codigo_banco, 9999, 9, '', self.qtd_lote_arquivo, self.qtd_registro_arquivo, self.qtd_conta, '')
+        f.write(string_segmento_q)
+        f.close()
+
+
