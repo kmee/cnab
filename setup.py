@@ -11,7 +11,7 @@ setup(
     package_data={
         'cnab240': ['bancos/*/*/*.json']
     },
-    zip_safe=False,
+    zip_safe=True,
     install_requires=[],
     provides=[
         'cnab240'
