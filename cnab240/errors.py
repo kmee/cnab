@@ -34,6 +34,7 @@ class AtribuicaoCampoError(Cnab240Error):
                 repr(self.valor),
             )
 
+
 class NumDigitosExcedidoError(AtribuicaoCampoError):
     """Tentativa de atribuicao de valor mais longo que o campo suportaia"""
 
