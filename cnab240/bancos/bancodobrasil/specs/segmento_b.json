@@ -174,21 +174,21 @@
       "nome": "aviso",
       "posicao_inicio": 226,
       "posicao_fim": 226,
-      "formato": "num"
+      "formato": "alfa"
     },
 
     "25.3B": {
       "nome": "codigo_ug_centralizadora",
       "posicao_inicio": 227,
       "posicao_fim": 232,
-      "formato": "num"
+      "formato": "alfa"
     },
 
     "26.3": {
       "nome": "codigo_ispb",
       "posicao_inicio": 233,
       "posicao_fim": 240,
-      "formato": "num"
+      "formato": "alfa"
     }
 
   }
