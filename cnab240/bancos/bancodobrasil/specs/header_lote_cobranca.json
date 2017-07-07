@@ -135,14 +135,14 @@
     },
 
     "15.1": {
-      "nome": "cedente_conta_DV",
+      "nome": "cedente_conta_dv",
       "posicao_inicio": 72,
       "posicao_fim": 72,
       "formato": "alfa"
     },
 
     "16.1": {
-      "nome": "cedente_DV",
+      "nome": "cedente_dv_ag_cc",
       "posicao_inicio": 73,
       "posicao_fim": 73,
       "formato": "alfa"

@@ -156,15 +156,14 @@
       "nome": "credito_data_real",
       "posicao_inicio": 155,
       "posicao_fim": 162,
-      "formato": "num"
+      "formato": "alfa"
     },
 
     "23.3A": {
       "nome": "credito_valor_real",
       "posicao_inicio": 163,
       "posicao_fim": 177,
-      "formato": "num",
-      "decimais": 2
+      "formato": "alfa"
     },
 
     "24.3A": {
