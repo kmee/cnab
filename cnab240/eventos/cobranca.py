@@ -3,6 +3,7 @@ from cnab240.tipos import EventoBase
 
 
 class EventoInclusao(EventoBase):
+
     def __init__(self, banco, **kwargs):
         super(EventoInclusao, self).__init__(banco, 1)
         args = self.clean_kwargs(kwargs)
