@@ -90,7 +90,7 @@
     },
 
     "13.1": {
-      "nome": "cedente_agencia_DV",
+      "nome": "cedente_agencia_dv",
       "posicao_inicio": 58,
       "posicao_fim": 58,
       "formato": "alfa"
@@ -104,14 +104,14 @@
     },
 
     "15.1": {
-      "nome": "cedente_conta_DV",
+      "nome": "cedente_conta_dv",
       "posicao_inicio": 71,
       "posicao_fim": 71,
       "formato": "alfa"
     },
 
     "16.1": {
-      "nome": "cedente_DV",
+      "nome": "cedente_dv_ag_cc",
       "posicao_inicio": 72,
       "posicao_fim": 72,
       "formato": "alfa"
@@ -184,7 +184,7 @@
       "nome": "indicativo_forma_pagamento",
       "posicao_inicio": 223,
       "posicao_fim": 224,
-      "formato": "num"
+      "formato": "alfa"
     },
 
     "27.1": {
