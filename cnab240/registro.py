@@ -14,6 +14,7 @@ from cnab240 import errors
 
 
 class CampoBase(object):
+
     def __init__(self):
         self._valor = None
 
@@ -25,7 +26,7 @@ class CampoBase(object):
     def valor(self, valor):
 
         if self.formato == 'alfa':
-            #if not isinstance(valor, unicode):
+            # if not isinstance(valor, unicode):
             if not isinstance(valor, basestring):
                 print "{0} - {1}".format(self.nome, self.valor)
                 raise errors.TipoError(self, valor)
@@ -35,7 +36,6 @@ class CampoBase(object):
                 # reduz o len(valor)
                 cortar = len(valor) - self.digitos
                 valor = valor[:-(cortar)]
-
 
         elif self.decimais:
             if not isinstance(valor, Decimal):
@@ -82,7 +82,7 @@ class CampoBase(object):
 
         if self.formato == 'alfa' or self.decimais:
             if self.decimais:
-            # if self.formato == 'num':
+                # if self.formato == 'num':
                 valor = unicode(self.valor).replace('.', '')
                 chars_faltantes = self.digitos - len(valor)
                 return (u'0' * chars_faltantes) + valor
@@ -140,7 +140,8 @@ class RegistroBase(object):
 
     def necessario(self):
         for campo in self._campos.values():
-            eh_controle = campo.nome.startswith('controle_') or campo.nome.startswith('servico_')
+            eh_controle = campo.nome.startswith(
+                'controle_') or campo.nome.startswith('servico_')
             if not eh_controle and campo.valor != None:
                 return True
 
@@ -188,6 +189,7 @@ class RegistroBase(object):
 
 
 class Registros(object):
+
     def __init__(self, specs_dirpath):
         # TODO: Validar spec: nome (deve ser unico para cada registro),
         #   posicao_inicio, posicao_fim, formato (alpha), decimais (0),
