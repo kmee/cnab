@@ -102,7 +102,6 @@ class Lote(object):
         if self._codigo:
             self.atualizar_codigo_eventos()
 
-    # Breakpoint
     def __unicode__(self):
         if not self._eventos:
             raise errors.NenhumEventoError()
@@ -215,10 +214,8 @@ class Arquivo(object):
     def lotes(self):
         return self._lotes
 
-    # def incluir_cobranca(self, **kwargs):
     def incluir_cobranca(self, header, **kwargs):
         # 1 eh o codigo de cobranca
-        #import pudb;pu.db
         codigo_evento = 1
         evento = Evento(self.banco, codigo_evento)
 
@@ -235,25 +232,19 @@ class Arquivo(object):
         lote_cobranca = self.encontrar_lote(codigo_evento)
 
         if lote_cobranca is None:
-            #import pudb;pu.db
-            #header = self.banco.registros.HeaderLoteCobranca(**self.header.todict())
             header = self.banco.registros.HeaderLoteCobranca(**header)
             trailer = self.banco.registros.TrailerLoteCobranca()
             lote_cobranca = Lote(self.banco, header, trailer)
 
-            # Para conseguir inserir todos os eventos de cobrança em um unico
-            # lote precisa informar o código do serviço
             lote_cobranca.header.servico_servico = codigo_evento
 
             self.adicionar_lote(lote_cobranca)
 
-            # if header.controlecob_numero is None:
             if "controlecob_numero" not in dir(header) or header.controlecob_numero is None:
                 header.controlecob_numero = int('{0}{1:02}'.format(
                     self.header.arquivo_sequencia,
                     lote_cobranca.codigo))
 
-            # if header.controlecob_data_gravacao is None:
             if "controlecob_data_gravacao" not in dir(header) or header.controlecob_data_gravacao is None:
                 header.controlecob_data_gravacao = self.header.arquivo_data_de_geracao
 
