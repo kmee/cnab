@@ -60,8 +60,7 @@ class Lote(object):
         self.header = header
         self.trailer = trailer
         self._codigo = None
-        if self.trailer != None:
-            self.trailer.quantidade_registros = 2
+        self.trailer.quantidade_registros = 2
         self._eventos = []
 
     @property
@@ -160,6 +159,7 @@ class Arquivo(object):
             tipo_registro = linha[7]
 
             if tipo_registro == '0':
+
                 self.header = self.banco.registros.HeaderArquivo()
                 self.header.carregar(linha)
 
@@ -205,7 +205,7 @@ class Arquivo(object):
     def lotes(self):
         return self._lotes
 
-    def incluir_cobranca(self, header, **kwargs):
+    def incluir_cobranca(self, **kwargs):
         # 1 eh o codigo de cobranca
         codigo_evento = 1
         evento = Evento(self.banco, codigo_evento)
@@ -223,20 +223,20 @@ class Arquivo(object):
         lote_cobranca = self.encontrar_lote(codigo_evento)
 
         if lote_cobranca is None:
-            header = self.banco.registros.HeaderLoteCobranca(**header)
+            header = self.banco.registros.HeaderLoteCobranca(
+                **self.header.todict()
+            )
             trailer = self.banco.registros.TrailerLoteCobranca()
             lote_cobranca = Lote(self.banco, header, trailer)
 
-            lote_cobranca.header.servico_servico = codigo_evento
-
             self.adicionar_lote(lote_cobranca)
 
-            if "controlecob_numero" not in dir(header) or header.controlecob_numero is None:
+            if header.controlecob_numero is None:
                 header.controlecob_numero = int('{0}{1:02}'.format(
                     self.header.arquivo_sequencia,
                     lote_cobranca.codigo))
 
-            if "controlecob_data_gravacao" not in dir(header) or header.controlecob_data_gravacao is None:
+            if header.controlecob_data_gravacao is None:
                 header.controlecob_data_gravacao = self.header.arquivo_data_de_geracao
 
         lote_cobranca.adicionar_evento(evento)
@@ -255,14 +255,11 @@ class Arquivo(object):
         self._lotes.append(lote)
         lote.codigo = len(self._lotes)
 
-        if self.trailer != None:
-            if hasattr(self.trailer, 'totais_quantidade_lotes'):
-                # Incrementar numero de lotes no trailer do arquivo
-                self.trailer.totais_quantidade_lotes += 1
+        # Incrementar numero de lotes no trailer do arquivo
+        self.trailer.totais_quantidade_lotes += 1
 
-            if hasattr(self.trailer, 'totais_quantidade_registros'):
-                # Incrementar numero de registros no trailer do arquivo
-                self.trailer.totais_quantidade_registros += len(lote)
+        # Incrementar numero de registros no trailer do arquivo
+        self.trailer.totais_quantidade_registros += len(lote)
 
     def escrever(self, file_):
         file_.write(unicode(self).encode('ascii'))
