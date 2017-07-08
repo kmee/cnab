@@ -4,13 +4,9 @@ try:
 except ImportError:
     import unittest
 
-import os
-import codecs
 
 from cnab240 import errors
-from cnab240.bancos import itau
-from cnab240.tipos import Lote
-from tests.data import get_itau_data_from_file
+from tests.data_itau import get_itau_data_from_file
 
 
 class TestLote(unittest.TestCase):

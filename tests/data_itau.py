@@ -11,8 +11,9 @@ ARQS_DIRPATH = os.path.join(TESTS_DIRPATH, 'arquivos')
 
 def get_itau_data_from_file():
     itau_data = dict()
-    arquivo_remessa = codecs.open(os.path.join(ARQS_DIRPATH,
-                                               'cobranca.itau.rem'), encoding='ascii')
+    arquivo_remessa = codecs.open(os.path.join(
+        ARQS_DIRPATH,
+        'cobranca.itau.rem'), encoding='ascii')
 
     itau_data['remessa'] = arquivo_remessa.read()
     arquivo_remessa.seek(0)
