@@ -11,7 +11,6 @@ class AtribuicaoCampoError(Cnab240Error):
     def __init__(self, campo, valor):
         self.campo = campo
         self.valor = valor
-        #super(AtribuicaoCampoError, self).__init__(self)
         super(AtribuicaoCampoError, self).__init__()
 
     def __unicode__(self):
@@ -51,7 +50,6 @@ class FaltandoArgsError(Cnab240Error):
 
     def __init__(self, args_faltantes):
         self.args_faltantes = args_faltantes
-        #super(FaltandoArgsError, self).__init__(self)
         super(FaltandoArgsError, self).__init__()
 
     def __unicode__(self):
