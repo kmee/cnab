@@ -68,3 +68,7 @@ class NenhumEventoError(Cnab240Error):
 
 class CampoObrigatorioError(Cnab240Error):
     """Campo obrigatorio nao preenchido."""
+
+
+class ElementoNaoImplementado(Cnab240Error):
+    """Campo obrigatorio nao preenchido."""
