@@ -6,7 +6,7 @@
       "posicao_inicio": 1,
       "posicao_fim": 3,
       "formato": "num",
-      "default": 104
+      "default": 341
     },
 
     "02.1": {
@@ -28,22 +28,24 @@
       "nome": "servico_operacao",
       "posicao_inicio": 9,
       "posicao_fim": 9,
-      "formato": "alfa"
+      "formato": "alfa",
+      "default": "R"
     },
 
     "05.1": {
       "nome": "servico_servico",
       "posicao_inicio": 10,
       "posicao_fim": 11,
-      "formato": "num"
+      "formato": "num",
+      "default": 1
     },
 
     "06.1": {
-      "nome": "servico_cnab_exclusivo_campo06dot1",
+      "nome": "vazio1",
       "posicao_inicio": 12,
       "posicao_fim": 13,
-      "formato": "num",
-      "default": 0
+      "formato": "alfa",
+      "default": ""
     },
 
     "07.1": {
@@ -51,11 +53,11 @@
       "posicao_inicio": 14,
       "posicao_fim": 16,
       "formato": "num",
-      "default": 30
+      "default": 40
     },
 
     "08.1": {
-      "nome": "cnab_exclusivo_campo08dot1",
+      "nome": "vazio2",
       "posicao_inicio": 17,
       "posicao_fim": 17,
       "formato": "alfa",
@@ -66,65 +68,59 @@
       "nome": "cedente_inscricao_tipo",
       "posicao_inicio": 18,
       "posicao_fim": 18,
-      "formato": "num"
+      "formato": "alfa"
     },
 
     "10.1": {
       "nome": "cedente_inscricao_numero",
       "posicao_inicio": 19,
       "posicao_fim": 33,
-      "formato": "num"
+      "formato": "alfa"
     },
 
     "11.1": {
-      "nome": "cedente_convenio",
+      "nome": "vazio3",
       "posicao_inicio": 34,
-      "posicao_fim": 39,
-      "formato": "num"
-    },
-
-    "11.2": {
-      "nome": "cedente_caixa_exclusivo_campo11dot1M",
-      "posicao_inicio": 40,
       "posicao_fim": 53,
-      "formato": "num",
-      "default": 0
+      "formato": "alfa",
+      "default": ""
     },
 
     "12.1": {
       "nome": "cedente_agencia",
       "posicao_inicio": 54,
       "posicao_fim": 58,
-      "formato": "num"
-    },
-
-    "13.1": {
-      "nome": "cedente_agencia_dv",
-      "posicao_inicio": 59,
-      "posicao_fim": 59,
       "formato": "alfa"
     },
 
+    "13.1": {
+      "nome": "vazio5",
+      "posicao_inicio": 59,
+      "posicao_fim": 59,
+      "formato": "alfa",
+      "default": ""
+    },
+
     "14.1": {
-      "nome": "cedente_codigo_codCedente",
+      "nome": "cedente_conta",
       "posicao_inicio": 60,
-      "posicao_fim": 65,
+      "posicao_fim": 71,
       "formato": "num"
     },
 
     "15.1": {
-      "nome": "cedente_codModelo",
-      "posicao_inicio": 66,
+      "nome": "vazio7",
+      "posicao_inicio": 72,
       "posicao_fim": 72,
-      "formato": "num"
+      "formato": "alfa",
+      "default": ""
     },
 
     "16.1": {
-      "nome": "cedente_caixa_exclusivo_campo16dot1M",
+      "nome": "cedente_agencia_conta_dv",
       "posicao_inicio": 73,
       "posicao_fim": 73,
-      "formato": "num",
-      "default": 0
+      "formato": "alfa"
     },
 
     "17.1": {
@@ -135,21 +131,23 @@
     },
 
     "18.1": {
-      "nome": "informacao1",
+      "nome": "vazio8",
       "posicao_inicio": 104,
       "posicao_fim": 143,
-      "formato": "alfa"
+      "formato": "alfa",
+      "default": ""
     },
 
     "19.1": {
-      "nome": "informacao2",
+      "nome": "vazio9",
       "posicao_inicio": 144,
       "posicao_fim": 183,
-      "formato": "alfa"
+      "formato": "alfa",
+      "default": ""
     },
 
     "20.1": {
-      "nome": "arquivo_sequencia",
+      "nome": "controlecob_numero",
       "posicao_inicio": 184,
       "posicao_fim": 191,
       "formato": "num"
@@ -163,14 +161,15 @@
     },
 
     "22.1": {
-      "nome": "dataCredito",
+      "nome": "data_credito",
       "posicao_inicio": 200,
       "posicao_fim": 207,
-      "formato": "num"
+      "formato": "num",
+      "default": 0
     },
 
     "23.1": {
-      "nome": "cnab_exclusivo_campo23dot1",
+      "nome": "vazio9",
       "posicao_inicio": 208,
       "posicao_fim": 240,
       "formato": "alfa",

@@ -1,31 +1,31 @@
 {
-  "nome": "TrailerLoteCobranca",
+  "nome": "TrailerArquivo",
   "campos": {
-    "01.5": {
+    "01.9": {
       "nome": "controle_banco",
       "posicao_inicio": 1,
       "posicao_fim": 3,
       "formato": "num",
-      "default": 33
+      "default": 341
     },
 
-    "02.5": {
+    "02.9": {
       "nome": "controle_lote",
       "posicao_inicio": 4,
       "posicao_fim": 7,
       "formato": "num",
-      "default": 0
+      "default": 9999
     },
 
-    "03.5": {
+    "03.9": {
       "nome": "controle_registro",
       "posicao_inicio": 8,
       "posicao_fim": 8,
       "formato": "num",
-      "default": 5
+      "default": 9
     },
 
-    "04.5": {
+    "04.9": {
       "nome": "vazio1",
       "posicao_inicio": 9,
       "posicao_fim": 17,
@@ -33,17 +33,31 @@
       "default": ""
     },
 
-    "05.5": {
-      "nome": "quantidade_registros",
+    "05.9": {
+      "nome": "totais_quantidade_lotes",
       "posicao_inicio": 18,
       "posicao_fim": 23,
-      "formato": "num",
-      "default": 0
+      "formato": "num"
     },
 
-    "06.5": {
-      "nome": "vazio2",
+    "06.9": {
+      "nome": "totais_quantidade_registros",
       "posicao_inicio": 24,
+      "posicao_fim": 29,
+      "formato": "num"
+    },
+
+    "07.9": {
+      "nome": "vazio2",
+      "posicao_inicio": 30,
+      "posicao_fim": 35,
+      "formato": "alfa",
+      "default": ""
+    },
+
+    "08.9": {
+      "nome": "vazio3",
+      "posicao_inicio": 36,
       "posicao_fim": 240,
       "formato": "alfa",
       "default": ""
