@@ -27,7 +27,7 @@ class TestBancoBrasilPagamentoCnab240(unittest.TestCase):
         self.data = get_banco_brasil_data_from_dict()
         self.arquivo = Arquivo(bancodobrasil, **self.data['header'])
 
-    def test_unicode(self):
+    def test_banco_do_brasil_pagamento(self):
 
         for evento in self.data['pagamento']:
             self.arquivo.incluir_debito_pagamento(
@@ -39,7 +39,7 @@ class TestBancoBrasilPagamentoCnab240(unittest.TestCase):
         #     get_banco_brasil_file_remessa()
         # )
 
-    def test_empty_data(self):
+    def test_banco_do_brasil_arquivo_vazio(self):
         arquivo = Arquivo(bancodobrasil)
         self.assertRaises(errors.ArquivoVazioError, unicode, arquivo)
 
