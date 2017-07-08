@@ -118,7 +118,8 @@
       "nome": "arquivo_codigo",
       "posicao_inicio": 143,
       "posicao_fim": 143,
-      "formato": "alfa"
+      "formato": "alfa",
+      "default": ""
     },
 
     "17.0": {
