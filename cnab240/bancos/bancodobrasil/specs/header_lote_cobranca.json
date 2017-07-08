@@ -142,7 +142,7 @@
     },
 
     "16.1": {
-      "nome": "cedente_dv_ag_cc",
+      "nome": "cedente_agencia_conta_dv",
       "posicao_inicio": 73,
       "posicao_fim": 73,
       "formato": "alfa"
