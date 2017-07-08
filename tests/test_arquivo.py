@@ -24,15 +24,15 @@ class TestCnab240(unittest.TestCase):
         self.itau_data = get_itau_data_from_dict()
         self.arquivo = Arquivo(itau, **self.itau_data['arquivo'])
 
-    def test_unicode(self):
+    def test_itau_remessa_cobranca_unicode(self):
         self.arquivo.incluir_cobranca(**self.itau_data['cobranca'])
         self.assertEqual(unicode(self.arquivo), get_itau_file_remessa())
 
-    def test_empty_data(self):
+    def test_itau_arquivo_vazio(self):
         arquivo = Arquivo(itau)
         self.assertRaises(errors.ArquivoVazioError, unicode, arquivo)
 
-    def test_leitura(self):
+    def test_itau_retorno_cobranca(self):
         return_file_path = os.path.join(ARQS_DIRPATH, 'cobranca.itau.ret')
         ret_file = codecs.open(return_file_path, encoding='ascii')
         arquivo = Arquivo(itau, arquivo=ret_file)
