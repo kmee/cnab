@@ -135,7 +135,7 @@ class RegistroBase(object):
         for campo in self._campos.values():
             eh_controle = campo.nome.startswith(
                 'controle_') or campo.nome.startswith('servico_')
-            if not eh_controle and campo.valor != None:
+            if not eh_controle and campo.valor is not None:
                 return True
 
         return False
@@ -147,15 +147,16 @@ class RegistroBase(object):
                 data_dict[campo.nome] = campo.valor
         return data_dict
 
-    def fromdict(self, data_dict):
-        ignore_fields = lambda key: any((
+    def ignore_fields(self, key):
+        return any((
             key.startswith('vazio'),
             key.startswith('servico_'),
             key.startswith('controle_'),
         ))
 
+    def fromdict(self, data_dict):
         for key, value in data_dict.items():
-            if hasattr(self, key) and not ignore_fields(key):
+            if hasattr(self, key) and not self.ignore_fields(key):
                 setattr(self, key, value)
 
     def carregar(self, registro_str):
