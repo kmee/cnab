@@ -5,8 +5,7 @@
       "nome": "controle_banco",
       "posicao_inicio": 1,
       "posicao_fim": 3,
-      "formato": "num",
-      "default": 1
+      "formato": "num"
     },
 
     "02.1": {
