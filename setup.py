@@ -18,7 +18,7 @@ setup(
     ],
     license='MIT',
     description='Classe para gerar arquivo de remessa e leitura de retorno no '
-                                                            'padrão CNAB',
+    'padrão CNAB240',
     long_description=open('README.md', 'r').read(),
     download_url='https://github.com/kmee/cnab',
     scripts=[],
