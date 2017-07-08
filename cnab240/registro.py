@@ -26,13 +26,12 @@ class CampoBase(object):
     def valor(self, valor):
 
         if self.formato == 'alfa':
-            if not isinstance(valor, basestring):
+            if not isinstance(valor, unicode):
                 print "{0} - {1}".format(self.nome, self.valor)
                 raise errors.TipoError(self, valor)
             if len(valor) > self.digitos:
+                raise errors.NumDigitosExcedidoError(self, valor)
                 print "{0} - {1}".format(self.nome, self.valor)
-                cortar = len(valor) - self.digitos
-                valor = valor[:-(cortar)]
 
         elif self.decimais:
             if not isinstance(valor, Decimal):
@@ -59,7 +58,6 @@ class CampoBase(object):
         self._valor = valor
 
     def __unicode__(self):
-
         if self.valor is None:
             if self.default is not None:
                 if self.decimais:
