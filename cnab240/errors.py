@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from __future__ import division, print_function, unicode_literals
+
 
 class Cnab240Error(Exception):
     """Excessao base para o CNAB 240"""
