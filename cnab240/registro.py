@@ -25,14 +25,11 @@ class CampoBase(object):
     @valor.setter
     def valor(self, valor):
         if self.formato == 'alfa':
-            # if not isinstance(valor, unicode):
             if not isinstance(valor, basestring):
                 print "{0} - {1}".format(self.nome, self.valor)
                 raise errors.TipoError(self, valor)
             if len(valor) > self.digitos:
                 print "{0} - {1}".format(self.nome, self.valor)
-                # raise errors.NumDigitosExcedidoError(self, valor)
-                # reduz o len(valor)
                 cortar = len(valor) - self.digitos
                 valor = valor[:-(cortar)]
 
@@ -81,7 +78,6 @@ class CampoBase(object):
 
         if self.formato == 'alfa' or self.decimais:
             if self.decimais:
-                # if self.formato == 'num':
                 valor = unicode(self.valor).replace('.', '')
                 chars_faltantes = self.digitos - len(valor)
                 return (u'0' * chars_faltantes) + valor
