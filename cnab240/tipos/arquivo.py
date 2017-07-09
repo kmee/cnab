@@ -18,7 +18,7 @@ from ..constantes import (
     TIPO_REGISTRO_TRAILER_ARQUIVO,
 
     TIPO_OPERACAO_ARQUIVO_RETORNO,
-
+    TIPO_OPERACAO_LANCAMENTO_CREDITO,
 )
 
 
@@ -29,11 +29,16 @@ class Arquivo(object):
 
         self._lotes = []
         self.banco = banco
+        self.arquivo_remessa_retorno = None
+
+        self.lote_aberto = None
+        self.evento_aberto = None
+
         arquivo = kwargs.get('arquivo')
         if isinstance(arquivo, (file, codecs.StreamReaderWriter)):
             self.lote_aberto = None
             self.evento_aberto = None
-            return self.carregar_retorno(arquivo)
+            return self.carregar_arquivo(arquivo)
 
         self.header = self.banco.registros.HeaderArquivo(**kwargs)
         self.trailer = self.banco.registros.TrailerArquivo(**kwargs)
@@ -55,6 +60,7 @@ class Arquivo(object):
             pass
 
     def _carrega_header_arquivo(self, linha):
+        self.arquivo_remessa_retorno = linha[142]
         self.header = self.banco.registros.HeaderArquivo()
         self.header.carregar(linha)
 
@@ -67,23 +73,18 @@ class Arquivo(object):
         raise NotImplementedError
 
     def _carrega_registro_detalhe(self, linha):
-
-        tipo_segmento = linha[13]
+        # codigo_evento = linha[9:13]
         codigo_evento = linha[15:17]
+        Evento = self.lote_aberto.classe_evento
+        segmento, abertura = Evento.carrega_segmento(self.banco, linha)
 
-        if tipo_segmento == TIPO_OPERACAO_ARQUIVO_RETORNO:
-            seg_t = self.banco.registros.SegmentoT()
-            seg_t.carregar(linha)
-
+        if abertura:
             self.evento_aberto = Evento(self.banco, int(codigo_evento))
-            self.lote_aberto._eventos.append(self.evento_aberto)
-            self.evento_aberto._segmentos.append(seg_t)
 
-        elif tipo_segmento == 'U':
-            seg_u = self.banco.registros.SegmentoU()
-            seg_u.carregar(linha)
-            self.evento_aberto._segmentos.append(seg_u)
-            self.evento_aberto = None
+        self.lote_aberto._eventos.append(self.evento_aberto)
+        self.evento_aberto._segmentos.append(segmento)
+        # self.lote_aberto.adicionar_evento(self.evento_aberto)
+        # self.evento_aberto.adicionar_segmento(segmento)
 
     def _carrega_regitros_finais_lote(self):
         raise NotImplementedError
@@ -96,7 +97,7 @@ class Arquivo(object):
         self.trailer = self.banco.registros.TrailerArquivo()
         self.trailer.carregar(linha)
 
-    def carregar_retorno(self, arquivo):
+    def carregar_arquivo(self, arquivo):
 
         for linha in arquivo:
             tipo_registro = linha[7]
