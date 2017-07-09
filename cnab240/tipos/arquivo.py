@@ -80,8 +80,8 @@ class Arquivo(object):
 
         if abertura:
             self.evento_aberto = Evento(self.banco, int(codigo_evento))
+            self.lote_aberto._eventos.append(self.evento_aberto)
 
-        self.lote_aberto._eventos.append(self.evento_aberto)
         self.evento_aberto._segmentos.append(segmento)
         # self.lote_aberto.adicionar_evento(self.evento_aberto)
         # self.evento_aberto.adicionar_segmento(segmento)
