@@ -12,7 +12,7 @@ from cnab240.bancos import bancodobrasil
 from cnab240.tipos import Arquivo
 from tests.data_bancobrasil import (
     get_banco_brasil_data_from_dict,
-    # get_banco_brasil_file_remessa,
+    get_banco_brasil_file_remessa,
     # ARQS_DIRPATH
 )
 
@@ -33,17 +33,15 @@ class TestBancoBrasilPagamentoCnab240(unittest.TestCase):
             self.arquivo.incluir_debito_pagamento(
                 **evento
             )
-        # TODO: FIXME
-        # self.assertEqual(
-        #     unicode(self.arquivo),
-        #     get_banco_brasil_file_remessa()
-        # )
+        self.assertEqual(
+            unicode(self.arquivo),
+            get_banco_brasil_file_remessa()
+        )
 
     def test_banco_do_brasil_arquivo_vazio(self):
         arquivo = Arquivo(bancodobrasil)
         self.assertRaises(errors.ArquivoVazioError, unicode, arquivo)
 
-    # TODO: FIXME
     # def test_leitura(self):
     #     return_file_path = os.path.join(
     #         ARQS_DIRPATH,
