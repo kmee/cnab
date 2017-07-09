@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import division, print_function, unicode_literals
+
 import codecs
 from datetime import datetime
 
@@ -10,11 +11,14 @@ from .. import errors
 from ..constantes import (
     TIPO_REGISTRO_HEADER_ARQUIVO,
     TIPO_REGISTRO_HEADER_LOTE,
+    TIPO_REGISTRO_REGISTROS_INICIAIS_LOTE,
     TIPO_REGISTRO_DETALHE,
     TIPO_REGISTRO_TRAILER_LOTE,
+    TIPO_REGISTRO_REGISTROS_FINAIS_LOTE,
     TIPO_REGISTRO_TRAILER_ARQUIVO,
+
     TIPO_OPERACAO_ARQUIVO_RETORNO,
-    TIPO_SERVICO_COBRANCA,
+
 )
 
 
@@ -27,6 +31,8 @@ class Arquivo(object):
         self.banco = banco
         arquivo = kwargs.get('arquivo')
         if isinstance(arquivo, (file, codecs.StreamReaderWriter)):
+            self.lote_aberto = None
+            self.evento_aberto = None
             return self.carregar_retorno(arquivo)
 
         self.header = self.banco.registros.HeaderArquivo(**kwargs)
@@ -48,56 +54,67 @@ class Arquivo(object):
         except AttributeError:
             pass
 
-    def carregar_retorno(self, arquivo):
+    def _carrega_header_arquivo(self, linha):
+        self.header = self.banco.registros.HeaderArquivo()
+        self.header.carregar(linha)
 
-        lote_aberto = None
-        evento_aberto = None
+    def _carrega_header_lote(self, linha):
+        # self.lote_aberto = None
+        self.lote_aberto = Lote(self.banco, linha=linha)
+        self._lotes.append(self.lote_aberto)
+
+    def _carrega_registros_iniciais_lote(self):
+        raise NotImplementedError
+
+    def _carrega_registro_detalhe(self, linha):
+
+        tipo_segmento = linha[13]
+        codigo_evento = linha[15:17]
+
+        if tipo_segmento == TIPO_OPERACAO_ARQUIVO_RETORNO:
+            seg_t = self.banco.registros.SegmentoT()
+            seg_t.carregar(linha)
+
+            self.evento_aberto = Evento(self.banco, int(codigo_evento))
+            self.lote_aberto._eventos.append(self.evento_aberto)
+            self.evento_aberto._segmentos.append(seg_t)
+
+        elif tipo_segmento == 'U':
+            seg_u = self.banco.registros.SegmentoU()
+            seg_u.carregar(linha)
+            self.evento_aberto._segmentos.append(seg_u)
+            self.evento_aberto = None
+
+    def _carrega_regitros_finais_lote(self):
+        raise NotImplementedError
+
+    def _carrega_trailer_lote(self, linha):
+        # TODO: Verificar oque fazer com um arquivo com mais de um lote
+        self.lote_aberto.trailer.carregar(linha)
+
+    def _carega_trailer_arquivo(self, linha):
+        self.trailer = self.banco.registros.TrailerArquivo()
+        self.trailer.carregar(linha)
+
+    def carregar_retorno(self, arquivo):
 
         for linha in arquivo:
             tipo_registro = linha[7]
 
             if tipo_registro == TIPO_REGISTRO_HEADER_ARQUIVO:
-
-                self.header = self.banco.registros.HeaderArquivo()
-                self.header.carregar(linha)
-
+                self._carrega_header_arquivo(linha)
             elif tipo_registro == TIPO_REGISTRO_HEADER_LOTE:
-                codigo_servico = linha[9:11]
-
-                if codigo_servico == TIPO_SERVICO_COBRANCA:
-                    header_lote = self.banco.registros.HeaderLoteCobranca()
-                    header_lote.carregar(linha)
-                    trailer_lote = self.banco.registros.TrailerLoteCobranca()
-                    lote_aberto = Lote(self.banco, header_lote, trailer_lote)
-                    self._lotes.append(lote_aberto)
-
+                self._carrega_header_lote(linha)
+            elif tipo_registro == TIPO_REGISTRO_REGISTROS_INICIAIS_LOTE:
+                self._carrega_registros_iniciais_lote(linha)
             elif tipo_registro == TIPO_REGISTRO_DETALHE:
-                tipo_segmento = linha[13]
-                codigo_evento = linha[15:17]
-
-                if tipo_segmento == TIPO_OPERACAO_ARQUIVO_RETORNO:
-                    seg_t = self.banco.registros.SegmentoT()
-                    seg_t.carregar(linha)
-
-                    evento_aberto = Evento(self.banco, int(codigo_evento))
-                    lote_aberto._eventos.append(evento_aberto)
-                    evento_aberto._segmentos.append(seg_t)
-
-                elif tipo_segmento == 'U':
-                    seg_u = self.banco.registros.SegmentoU()
-                    seg_u.carregar(linha)
-                    evento_aberto._segmentos.append(seg_u)
-                    evento_aberto = None
-
+                self._carrega_registro_detalhe(linha)
+            elif tipo_registro == TIPO_REGISTRO_REGISTROS_FINAIS_LOTE:
+                self._carrega_regitros_finais_lote(linha)
             elif tipo_registro == TIPO_REGISTRO_TRAILER_LOTE:
-                if trailer_lote is not None:
-                    lote_aberto.trailer.carregar(linha)
-                else:
-                    raise Exception
-
+                self._carrega_trailer_lote(linha)
             elif tipo_registro == TIPO_REGISTRO_TRAILER_ARQUIVO:
-                self.trailer = self.banco.registros.TrailerArquivo()
-                self.trailer.carregar(linha)
+                self._carega_trailer_arquivo(linha)
 
     @property
     def lotes(self):
