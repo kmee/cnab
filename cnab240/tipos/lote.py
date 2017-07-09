@@ -1,18 +1,84 @@
 # -*- encoding: utf8 -*-
 
 from evento import Evento
+from eventos import (
+    cobranca,
+    pagamento,
+)
 from .. import errors
+from ..constantes import (
+
+    TIPO_OPERACAO_LANCAMENTO_CREDITO,
+    TIPO_OPERACAO_LANCAMENTO_DEBITO,
+    TIPO_OPERACAO_EXTRATO_CONCILIACAO,
+    TIPO_OPERACAO_GESTAO_DE_CAIXA,
+    TIPO_OPERACAO_INFORMACOES_TITULOS_CAPTURADOS_PROPRIO_BANCO,
+    TIPO_OPERACAO_ARQUIVO_REMESSA,
+    TIPO_OPERACAO_ARQUIVO_RETORNO,
+    TIPO_SERVICO_PAGAMENTO_SALARIOS,
+    TIPO_SERVICO_COBRANCA,
+)
 
 
 class Lote(object):
 
-    def __init__(self, banco, header=None, trailer=None):
+    def __init__(self, banco, header=None, trailer=None, linha=None):
+
         self.banco = banco
         self.header = header
         self.trailer = trailer
         self._codigo = None
+        self.classe_evento = None
+        if linha:
+            tipo_registro = linha[7]
+            if not tipo_registro == '1':
+                raise NotImplementedError
+            self.carrega_lote(linha)
+
         self.trailer.quantidade_registros = 2
         self._eventos = []
+
+    def carrega_lote(self, linha):
+
+        tipo_operacao = linha[8]
+        tipo_servico = linha[9:11]
+        if tipo_operacao == TIPO_OPERACAO_LANCAMENTO_CREDITO:
+            self.header = self.banco.registros.HeaderLotePagamento()
+            self.header.carregar(linha)
+            self.trailer = self.banco.registros.TrailerLotePagamento()
+            if tipo_servico in (
+                    TIPO_SERVICO_PAGAMENTO_SALARIOS,
+            ):
+                self.classe_evento = pagamento.Pagamento
+            elif tipo_servico in ():
+                self.classe_evento = pagamento.Titulos
+            elif tipo_servico in ():
+                self.classe_evento = pagamento.Tributos
+            else:
+                raise NotImplementedError
+        elif tipo_operacao == TIPO_OPERACAO_LANCAMENTO_DEBITO:
+            raise NotImplementedError
+        elif tipo_operacao == TIPO_OPERACAO_EXTRATO_CONCILIACAO:
+            raise NotImplementedError
+        elif tipo_operacao == TIPO_OPERACAO_GESTAO_DE_CAIXA:
+            raise NotImplementedError
+        elif tipo_operacao == \
+                TIPO_OPERACAO_INFORMACOES_TITULOS_CAPTURADOS_PROPRIO_BANCO:
+            raise NotImplementedError
+        elif tipo_operacao == TIPO_OPERACAO_ARQUIVO_REMESSA:
+            raise NotImplementedError
+        elif tipo_operacao == TIPO_OPERACAO_ARQUIVO_RETORNO:
+
+            self.header = self.banco.registros.HeaderLoteCobranca()
+            self.header.carregar(linha)
+            self.trailer = self.banco.registros.TrailerLoteCobranca()
+
+            if tipo_servico == TIPO_SERVICO_COBRANCA:
+                self.classe_evento = cobranca.Cobranca
+            else:
+                raise NotImplementedError
+        else:
+            raise NotImplementedError
 
     @property
     def codigo(self):
