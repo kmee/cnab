@@ -2,7 +2,6 @@
 
 from __future__ import division, print_function, unicode_literals
 
-
 TIPO_REGISTRO_HEADER_ARQUIVO = '0'
 TIPO_REGISTRO_HEADER_LOTE = '1'
 TIPO_REGISTRO_REGISTROS_INICIAIS_LOTE = '2'

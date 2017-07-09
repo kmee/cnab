@@ -2,17 +2,58 @@
 
 from evento import Evento
 from .. import errors
+from ..constantes import (
+
+    TIPO_OPERACAO_LANCAMENTO_CREDITO,
+)
 
 
 class Lote(object):
 
-    def __init__(self, banco, header=None, trailer=None):
+    def __init__(self, banco, header=None, trailer=None, linha=None):
+
         self.banco = banco
         self.header = header
         self.trailer = trailer
         self._codigo = None
+
+        if linha:
+            tipo_registro = linha[7]
+            if not tipo_registro == '1':
+                raise NotImplementedError
+            self.carrega_lote(linha)
+
         self.trailer.quantidade_registros = 2
         self._eventos = []
+
+    def carrega_lote(self, linha):
+
+        tipo_operacao = linha[8]
+
+        if tipo_operacao == TIPO_OPERACAO_LANCAMENTO_CREDITO:
+            self.header = self.banco.registros.HeaderLotePagamento()
+            self.header.carregar(linha)
+            self.trailer = self.banco.registros.TrailerLotePagamento()
+        # elif tipo_operacao == TIPO_OPERACAO_LANCAMENTO_DEBITO:
+        #     raise NotImplementedError
+        # elif tipo_operacao == TIPO_OPERACAO_EXTRATO_CONCILIACAO:
+        #     raise NotImplementedError
+        # elif tipo_operacao == TIPO_OPERACAO_GESTAO_DE_CAIXA:
+        #     raise NotImplementedError
+        # elif tipo_operacao == \
+        #         TIPO_OPERACAO_INFORMACOES_TITULOS_CAPTURADOS_PROPRIO_BANCO:
+        #     raise NotImplementedError
+        # elif tipo_operacao == TIPO_OPERACAO_ARQUIVO_REMESSA:
+        #     raise NotImplementedError
+        # elif tipo_operacao == TIPO_OPERACAO_ARQUIVO_RETORNO:
+        #     raise NotImplementedError
+        else:
+            # codigo_servico = linha[9:11]
+            # Isto
+            # if codigo_servico == 0:
+            self.header = self.banco.registros.HeaderLoteCobranca()
+            self.header.carregar(linha)
+            self.trailer = self.banco.registros.TrailerLoteCobranca()
 
     @property
     def codigo(self):
