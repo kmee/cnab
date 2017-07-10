@@ -64,10 +64,28 @@ class Arquivo(object):
         self.header = self.banco.registros.HeaderArquivo()
         self.header.carregar(linha)
 
+        if __debug__ and self.header:
+            #
+            # Utilizando a saida do print, podemos debugar com facilidade
+            # e também utilizar a saída para criar novos testes, quando
+            # simulamos a importação de arquivos de clientes.
+            #
+            from pprint import pprint
+            pprint("header_arquivo = ")
+            pprint(self.header.todict())
+
     def _carrega_header_lote(self, linha):
         # self.lote_aberto = None
         self.lote_aberto = Lote(self.banco, linha=linha)
         self._lotes.append(self.lote_aberto)
+
+        if __debug__ and self.lote_aberto:
+
+            from pprint import pprint
+            pprint("header_lote_{0} = ".format(
+                self.lote_aberto.header.controle_lote
+            ))
+            pprint(self.lote_aberto.header.todict())
 
     def _carrega_registros_iniciais_lote(self):
         raise NotImplementedError
@@ -79,6 +97,22 @@ class Arquivo(object):
         segmento, abertura = Evento.carrega_segmento(self.banco, linha)
 
         if abertura:
+            if __debug__ and self.evento_aberto:
+
+                from pprint import pprint
+                # TODO: Substituir este for por alguma função built-in dentro
+                # de evento, para que o evento sempre mostre os campos de
+                # todos os seus segmentos
+                registro_debug = dict()
+                for seg in self.evento_aberto._segmentos:
+                    registro_debug.update(seg.todict())
+                pprint("{0}_{1} = ".format(
+                    self.evento_aberto._name,
+                    self.evento_aberto.servico_numero_registro,
+
+                ))
+                pprint(registro_debug)
+
             self.evento_aberto = Evento(self.banco, int(codigo_evento))
 
         self.lote_aberto._eventos.append(self.evento_aberto)
@@ -93,9 +127,21 @@ class Arquivo(object):
         # TODO: Verificar oque fazer com um arquivo com mais de um lote
         self.lote_aberto.trailer.carregar(linha)
 
+        if __debug__ and self.lote_aberto:
+            from pprint import pprint
+            pprint("trailer_lote_{0} = ".format(
+                self.lote_aberto.trailer.controle_lote
+            ))
+            pprint(self.lote_aberto.trailer.todict())
+
     def _carega_trailer_arquivo(self, linha):
         self.trailer = self.banco.registros.TrailerArquivo()
         self.trailer.carregar(linha)
+
+        if __debug__ and self.trailer:
+            from pprint import pprint
+            pprint("trailer_arquivo = ")
+            pprint(self.lote_aberto.trailer.todict())
 
     def carregar_arquivo(self, arquivo):
 
