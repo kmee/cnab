@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from __future__ import division, print_function, unicode_literals
 
@@ -5,6 +6,8 @@ from ..evento import Evento
 
 
 class Cobranca(Evento):
+
+    _name = 'cobranca'
 
     @staticmethod
     def carrega_segmento(banco, linha):
@@ -19,6 +22,9 @@ class Cobranca(Evento):
             segmento = banco.registros.SegmentoQ()
         elif codigo_segmento == 'R':
             segmento = banco.registros.SegmentoR()
+        #
+        # Retorno de cobrança
+        #
         elif codigo_segmento == 'T':
             abertura = True
             segmento = banco.registros.SegmentoT()

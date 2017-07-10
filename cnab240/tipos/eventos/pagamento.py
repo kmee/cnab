@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from __future__ import division, print_function, unicode_literals
 
@@ -5,6 +6,8 @@ from ..evento import Evento
 
 
 class Pagamento(Evento):
+
+    _name = 'pagamento'
 
     @staticmethod
     def carrega_segmento(banco, linha):
@@ -27,6 +30,8 @@ class Pagamento(Evento):
 
 class Titulos(Evento):
 
+    _name = 'pagamento_titulos'
+
     @staticmethod
     def carrega_segmento(banco, linha):
 
@@ -42,6 +47,8 @@ class Titulos(Evento):
 
 
 class Tributos(Evento):
+
+    _name = 'pagamento_tributos'
 
     @staticmethod
     def carrega_segmento(banco, linha):
