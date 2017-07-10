@@ -169,12 +169,26 @@ class RegistroBase(object):
                 exponente = campo.decimais * -1
                 dec = valor[:exponente] + '.' + valor[exponente:]
                 try:
+                    if dec == u'.':
+                        #
+                        # Alguns arquivos de retorno são enviados com a
+                        # informação em branco, para evitar alteramos o layout
+                        # realizamos esta conversão.
+                        #
+                        dec = '0.00'
                     campo.valor = Decimal(dec)
                 except InvalidOperation:
                     raise  # raise custom?
 
             elif campo.formato == 'num':
                 try:
+                    #
+                    # Alguns arquivos de retorno são enviados com a
+                    # informação em branco, para evitar alteramos o layout
+                    # realizamos esta conversão.
+                    #
+                    if not valor:
+                        valor = 0
                     campo.valor = int(valor)
                 except ValueError:
                     raise errors.TipoError(campo, valor)
