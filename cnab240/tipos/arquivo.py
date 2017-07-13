@@ -206,9 +206,10 @@ class Arquivo(object):
         # Incrementar numero de registros no trailer do arquivo
         self.trailer.totais_quantidade_registros += len(evento)
 
-    def incluir_debito_pagamento(self, seg_a=False, seg_b=False, **kwargs):
-        # 1 eh o codigo de cobranca
-        codigo_evento = 1
+    def incluir_debito_pagamento(
+            self, tipo_lote=30, seg_a=False, seg_b=False, **kwargs):
+        # Codigo do movimento da remessa
+        codigo_evento = kwargs.get('servico_codigo_movimento')
         evento = Evento(self.banco, codigo_evento)
 
         if not seg_a:
@@ -223,7 +224,7 @@ class Arquivo(object):
         # if seg_c.necessario():
         #     evento.adicionar_segmento(seg_c)
 
-        lote_pagamento = self.encontrar_lote(codigo_evento)
+        lote_pagamento = self.encontrar_lote(tipo_lote)
 
         if lote_pagamento is None:
             header = self.banco.registros.HeaderLotePagamento(
@@ -246,9 +247,9 @@ class Arquivo(object):
         # Incrementar numero de registros no trailer do arquivo
         self.trailer.totais_quantidade_registros += len(evento)
 
-    def encontrar_lote(self, codigo_servico):
+    def encontrar_lote(self, codigo_tipo_lote):
         for lote in self.lotes:
-            if lote.header.servico_servico == codigo_servico:
+            if lote.header.servico_servico == codigo_tipo_lote:
                 return lote
 
     def adicionar_lote(self, lote):
