@@ -47,12 +47,20 @@ class TestRegistro(unittest.TestCase):
         self.assertEqual(self.seg_p.valor_titulo, Decimal('2.13'))
 
     def test_leitura_campo_num_int(self):
+        # verifica que e possivel atribuir a um campo int valores que podem
+        # ser convertidos para int
+        self.header_arquivo.controle_banco = '341'
         self.assertEqual(self.header_arquivo.controle_banco, 341)
 
+        self.header_arquivo.controle_banco = '0'
+        self.assertEqual(self.header_arquivo.controle_banco, 0)
+
     def test_escrita_campo_num_int(self):
-        # aceitar somente inteiros (int e long)
+        # Nao aceitar campos que nao poder ser convertidos para int
         with self.assertRaises(errors.TipoError):
-            self.header_arquivo.controle_banco = 10.0
+            self.header_arquivo.controle_banco = 'a'
+
+        # Nao aceitar campos vazios pois nao podem ser convertidos
         with self.assertRaises(errors.TipoError):
             self.header_arquivo.controle_banco = ''
 
@@ -75,9 +83,11 @@ class TestRegistro(unittest.TestCase):
         with self.assertRaises(errors.TipoError):
             self.header_arquivo.cedente_nome = 'tracy'
 
-        # Testa que strings mais longas que obj.digitos nao serao aceitas
-        with self.assertRaises(errors.NumDigitosExcedidoError):
-            self.header_arquivo.cedente_convenio = u'123456789012345678901'
+        # nas strings mais longas que o permitido, e aplicado um slice para
+        # conter apenas a quantidade maxima de caracteres
+        self.header_arquivo.cedente_convenio = u'12345678901234567890131'
+        self.assertEqual(
+            self.header_arquivo.cedente_convenio, '12345678901234567890')
 
         # Testa que o valor atribuido foi guardado no objeto
         self.header_arquivo.cedente_nome = u'tracy'
