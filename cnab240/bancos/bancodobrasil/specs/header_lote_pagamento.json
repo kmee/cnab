@@ -5,7 +5,8 @@
       "nome": "controle_banco",
       "posicao_inicio": 1,
       "posicao_fim": 3,
-      "formato": "num"
+      "formato": "num",
+      "default": 1
     },
 
     "02.1": {
@@ -188,7 +189,7 @@
     },
 
     "27.1": {
-      "nome": "vazio1",
+      "nome": "vazio2",
       "posicao_inicio": 225,
       "posicao_fim": 230,
       "formato": "alfa",

@@ -5,7 +5,8 @@
       "nome": "controle_banco",
       "posicao_inicio": 1,
       "posicao_fim": 3,
-      "formato": "num"
+      "formato": "num",
+      "default": 1
     },
 
     "02.3B": {
@@ -171,10 +172,10 @@
     },
 
     "24.3B": {
-      "nome": "aviso",
+      "nome": "aviso_ao_favorecido",
       "posicao_inicio": 226,
       "posicao_fim": 226,
-      "formato": "alfa"
+      "formato": "num"
     },
 
     "25.3B": {
