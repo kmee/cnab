@@ -28,9 +28,14 @@ class CampoBase(object):
     @valor.setter
     def valor(self, valor):
         if self.formato == 'alfa':
+            # Se for do tipo alfa e vier com valor False, fazer cast para vazio
+            if not valor:
+                valor = u''
             if not isinstance(valor, unicode):
                 print ("{0} - {1}".format(self.nome, self.valor))
                 raise errors.TipoError(self, valor)
+            # Cortar as strings de acordo com o tamanho máximo permitido
+            valor = valor[:self.digitos]
             if len(valor) > self.digitos:
                 raise errors.NumDigitosExcedidoError(self, valor)
                 print ("{0} - {1}".format(self.nome, self.valor))
@@ -50,6 +55,10 @@ class CampoBase(object):
                 raise errors.NumDigitosExcedidoError(self, valor)
 
         else:
+            try:
+                valor = int(valor)
+            except:
+                raise errors.TipoError(self, valor)
             if not isinstance(valor, (int, long)):
                 print ("{0} - {1}".format(self.nome, self.valor))
                 raise errors.TipoError(self, valor)
@@ -153,7 +162,7 @@ class RegistroBase(object):
     def ignore_fields(self, key):
         return any((
             key.startswith('vazio'),
-            key.startswith('servico_'),
+            # key.startswith('servico_'),
             key.startswith('controle_'),
         ))
 
