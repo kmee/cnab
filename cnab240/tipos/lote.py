@@ -113,6 +113,7 @@ class Lote(object):
         self._eventos.append(evento)
         if self.trailer is not None and \
                 hasattr(self.trailer, 'quantidade_registros'):
+
             self.trailer.quantidade_registros += len(evento)
         self.atualizar_codigo_registros()
 
