@@ -238,10 +238,17 @@ class Arquivo(object):
 
             self.adicionar_lote(lote_pagamento)
         else:
-            lote_pagamento.trailer.somatoria_valores += \
-                kwargs.get('credito_valor_pagamento')
-            lote_pagamento.trailer.somatoria_quantidade_moedas += kwargs.get(
-                'credito_moeda_quantidade')
+            # Lote ja existe mas esta vazio
+            if not lote_pagamento.trailer.somatoria_valores:
+                lote_pagamento.trailer.somatoria_valores = \
+                    kwargs.get('credito_valor_pagamento')
+                lote_pagamento.trailer.somatoria_quantidade_moedas = \
+                    kwargs.get('credito_moeda_quantidade')
+            else:
+                lote_pagamento.trailer.somatoria_valores += \
+                    kwargs.get('credito_valor_pagamento')
+                lote_pagamento.trailer.somatoria_quantidade_moedas += \
+                    kwargs.get('credito_moeda_quantidade')
 
         lote_pagamento.adicionar_evento(evento)
         # Incrementar numero de registros no trailer do arquivo
