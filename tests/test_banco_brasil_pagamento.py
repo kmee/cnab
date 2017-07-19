@@ -9,7 +9,7 @@ except ImportError:
 
 from cnab240 import errors
 from cnab240.bancos import bancodobrasil
-from cnab240.tipos import Arquivo
+from cnab240.tipos import Arquivo, Lote
 from tests.data_bancobrasil import (
     get_banco_brasil_data_from_dict,
     get_banco_brasil_file_remessa,
@@ -29,14 +29,26 @@ class TestBancoBrasilPagamentoCnab240(unittest.TestCase):
 
     def test_banco_do_brasil_pagamento(self):
 
+        # Criar Header Lote
+        header = self.arquivo.banco.registros.HeaderLotePagamento(
+            **self.data['header_lote'])
+
+        # Criar Trailer do Lote
+        trailer = self.arquivo.banco.registros.TrailerLotePagamento()
+
+        # instancia do Lote
+        lote_pagamento = Lote(self.arquivo.banco, header, trailer)
+
+        # Adiciona o Lote no arquivo
+        self.arquivo.adicionar_lote(lote_pagamento)
+
+        # para cada Evento no dict, incluir no arquivo
         for evento in self.data['pagamento']:
-            self.arquivo.incluir_debito_pagamento(
-                **evento
-            )
+            self.arquivo.incluir_debito_pagamento(**evento)
+
+        # Testa se arquivo gerado e igual ao arquivo de exemplo
         self.assertEqual(
-            unicode(self.arquivo),
-            get_banco_brasil_file_remessa()
-        )
+            unicode(self.arquivo), get_banco_brasil_file_remessa())
 
     def test_banco_do_brasil_arquivo_vazio(self):
         arquivo = Arquivo(bancodobrasil)
