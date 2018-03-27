@@ -14,7 +14,7 @@
       "posicao_inicio": 4,
       "posicao_fim": 7,
       "formato": "num",
-      "default": 1
+      "default": 0
     },
 
     "03.0": {
