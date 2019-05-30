@@ -7,16 +7,13 @@
       "posicao_fim": 1,
       "formato": "num",
       "default": 9
-      },
-
+    },
     "02.9": {
       "nome": "branco",
       "posicao_inicio": 2,
       "posicao_fim": 394,
-      "formato": "alfa",
-      "default": ""
+      "formato": "alfa"
     },
-
     "03.9": {
       "nome": "num_seq_registro",
       "posicao_inicio": 395,

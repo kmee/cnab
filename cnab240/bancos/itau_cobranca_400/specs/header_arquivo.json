@@ -42,7 +42,7 @@
     },
 
     "06.0": {
-      "nome": "agencia",
+      "nome": "cedente_agencia",
       "posicao_inicio": 27,
       "posicao_fim": 30,
       "formato": "num"
@@ -53,21 +53,21 @@
       "posicao_inicio": 31,
       "posicao_fim": 32,
       "formato": "num",
-      "default": "00"
+      "default": 0
     },
 
     "08.0": {
-      "nome": "conta",
+      "nome": "cedente_conta",
       "posicao_inicio": 33,
       "posicao_fim": 37,
       "formato": "num"
     },
 
     "09.0": {
-      "nome": "dac",
+      "nome": "cedente_conta_dv",
       "posicao_inicio": 38,
       "posicao_fim": 38,
-      "formato": "um"
+      "formato": "num"
     },
 
     "10.0": {
@@ -78,23 +78,22 @@
     },
 
     "11.0": {
-      "nome": "nome_da_empresa",
+      "nome": "cedente_nome",
       "posicao_inicio": 47,
       "posicao_fim": 76,
-      "formato": "alfa",
-      "default": ""
+      "formato": "alfa"
     },
 
     "12.0": {
       "nome": "codigo_do_banco",
       "posicao_inicio": 77,
       "posicao_fim": 79,
-      "formato": "num",
+      "formato": "alfa",
       "default": "341"
     },
 
     "13.0": {
-      "nome": "nome_do_banco",
+      "nome": "nome_banco",
       "posicao_inicio": 80,
       "posicao_fim": 94,
       "formato": "alfa",
@@ -102,27 +101,24 @@
     },
 
     "14.0": {
-      "nome": "data_de_geracao",
+      "nome": "arquivo_data_de_geracao",
       "posicao_inicio": 95,
       "posicao_fim": 100,
-      "formato": "num",
-      "default": ""
+      "formato": "num"
     },
 
     "15.0": {
-      "nome": "brancos",
+      "nome": "brancos2",
       "posicao_inicio": 101,
       "posicao_fim": 394,
-      "formato": "alfa",
-      "default": ""
+      "formato": "alfa"
     },
 
     "16.0": {
-      "nome": "numero_sequencial",
-      "posicao_inicio": "395",
-      "posicao_fim": "400",
-      "formato": "num",
-      "default": "000001"
+      "nome": "num_seq_registro",
+      "posicao_inicio": 395,
+      "posicao_fim": 400,
+      "formato": "num"
     }
   }
 }

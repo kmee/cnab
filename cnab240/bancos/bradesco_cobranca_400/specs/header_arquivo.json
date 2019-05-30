@@ -56,7 +56,7 @@
     },
 
     "08.0": {
-      "nome": "numero_bradesco_camara_compensacao",
+      "nome": "codigo_do_banco",
       "posicao_inicio": 77,
       "posicao_fim": 79,
       "formato": "num",
