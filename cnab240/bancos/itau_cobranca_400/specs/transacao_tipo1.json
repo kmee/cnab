@@ -1,0 +1,332 @@
+{
+  "nome": "TransacaoTipo1",
+  "campos": {
+    "01.3P": {
+      "nome": "identificacao_registro",
+      /* "description": "IDENTIFICAÇÃO DO REGISTRO TRANSAÇÃO", */
+      "posicao_inicio": "1",
+      "posicao_fim": "1",
+      "formato": "num",
+    },
+    "02.3P": {
+      "nome": "cedente_inscricao_tipo",
+      /* "description": "TIPO DE INSCRIÇÃO DA EMPRESA", */
+      "posicao_inicio": "02",
+      "posicao_fim": "03",
+      "formato": "num",
+    },
+    "03.3P": {
+      "nome": "cedente_inscricao_numero",
+      /* "description": "Nº DE INSCRIÇÃO DA EMPRESA (CPF/CNPJ)", */
+      "posicao_inicio": "04",
+      "posicao_fim": "17",
+      "formato": "num",
+    },
+    "04.3P": {
+      "nome": "agencia",
+      /* "description": "AGÊNCIA MANTENEDORA DA CONTA", */
+      "posicao_inicio": "18",
+      "posicao_fim": "21",
+      "formato": "num",
+    },
+    "05.3P": {
+      "nome": "zeros",
+      /* "description": "COMPLEMENTO DE REGISTRO", */
+      "posicao_inicio": "22",
+      "posicao_fim": "23",
+      "formato": "num",
+    },
+    "06.3P": {
+      "nome": "conta",
+      /* "description": "NÚMERO DA CONTA CORRENTE DA EMPRESA", */
+      "posicao_inicio": "24",
+      "posicao_fim": "28",
+      "formato": "num",
+    },
+    "07.3P": {
+      "nome": "dac",
+      /* "description": "DÍGITO DE AUTO CONFERÊNCIA AG/CONTA EMPRESA", */
+      "posicao_inicio": "29",
+      "posicao_fim": "29",
+      "formato": "num",
+    },
+    "08.3P": {
+      "nome": "brancos",
+      /* "description": "COMPLEMENTO DE REGISTRO", */
+      "posicao_inicio": "30",
+      "posicao_fim": "33",
+      "formato": "alfa",
+    },
+    "09.3P": {
+      /* FALHOU */
+      "nome": "INSTRUÇÃO/ALEGAÇÃO",
+      /* "description": "CÓD.INSTRUÇÃO/ALEGAÇÃO A SER CANCELADA", */
+      "posicao_inicio": "34",
+      "posicao_fim": "37",
+      "formato": "num",
+    },
+    "10.3P": {
+      /* VERIFICAR */
+      "nome": "uso_empresa",
+      /* "description": "IDENTIFICAÇÃO DO TÍTULO NA EMPRESA", */
+      "posicao_inicio": "38",
+      "posicao_fim": "62",
+      "formato": "alfa",
+    },
+    "11.3P": {
+      "nome": "nosso_numero",
+      /* "description": "IDENTIFICAÇÃO DO TÍTULO NO BANCO", */
+      "posicao_inicio": "63",
+      "posicao_fim": "70",
+      "formato": "num",
+    },
+    "12.3P": {
+      /* FALHOU */
+      "nome": "QTDE DE MOEDA",
+      /* "description": "QUANTIDADE DE MOEDA VARIÁVEL", */
+      "posicao_inicio": "71",
+      "posicao_fim": "83",
+      "formato": "num",
+    },
+    "13.3P": {
+      "nome": "carteira_numero",
+      /* "description": "NÚMERO DA CARTEIRA NO BANCO", */
+      "posicao_inicio": "84",
+      "posicao_fim": "86",
+      "formato": "num",
+    },
+    "14.3P": {
+      /* VERIFICAR */
+      "nome": "uso_banco",
+      /* "description": "IDENTIFICAÇÃO DA OPERAÇÃO NO BANCO", */
+      "posicao_inicio": "87",
+      "posicao_fim": 107,
+      "formato": "alfa",
+    },
+    "15.3P": {
+      "nome": "carteira_cod",
+      /* "description": "CÓDIGO DA CARTEIRA", */
+      "posicao_inicio": 108,
+      "posicao_fim": 108,
+      "formato": "alfa",
+    },
+    "16.3P": {
+      "nome": "identificacao_ocorrencia",
+      /* "description": "IDENTIFICAÇÃO DA OCORRÊNCIA", */
+      "posicao_inicio": 109,
+      "posicao_fim": 110,
+      "formato": "9(02)",
+    },
+    "17.3P": {
+      "nome": "numero_documento",
+      /* "description": "Nº DO DOCUMENTO DE COBRANÇA (DUPL.,NP ETC.)", */
+      "posicao_inicio": 111,
+      "posicao_fim": 120,
+      "formato": "alfa",
+    },
+    "18.3P": {
+      "nome": "vencimento_titulo",
+      /* "description": "DATA DE VENCIMENTO DO TÍTULO", */
+      "posicao_inicio": 121,
+      "posicao_fim": 126,
+      "formato": "num",
+    },
+    "19.3P": {
+      "nome": "valor_titulo",
+      /* "description": "VALOR NOMINAL DO TÍTULO 127", */
+      "posicao_inicio": 139,
+      "posicao_fim": 9,
+      "formato": "(11)",
+    },
+    "20.3P": {
+      "nome": "codigo_banco",
+      /* "description": "Nº DO BANCO NA CÂMARA DE COMPENSAÇÃO", */
+      "posicao_inicio": 140,
+      "posicao_fim": 142,
+      "formato": "num",
+    },
+    "21.3P": {
+      "nome": "agencia_cobradora",
+      /* "description": "AGÊNCIA ONDE O TÍTULO SERÁ COBRADO", */
+      "posicao_inicio": 143,
+      "posicao_fim": 147,
+      "formato": "num",
+    },
+    "22.3P": {
+      "nome": "especie_titulo",
+      /* "description": "ESPÉCIE DO TÍTULO", */
+      "posicao_inicio": 148,
+      "posicao_fim": 149,
+      "formato": "alfa",
+    },
+    "23.3P": {
+      "nome": "aceite_titulo",
+      /* "description": "IDENTIFICAÇÃO DE TÍTULO ACEITO OU NÃO ACEITO", */
+      "posicao_inicio": 150,
+      "posicao_fim": 150,
+      "formato": "alfa",
+    },
+    "24.3P": {
+      "nome": "data_emissao_titulo",
+      /* "description": "DATA DA EMISSÃO DO TÍTULO", */
+      "posicao_inicio": 151,
+      "posicao_fim": 156,
+      "formato": "num",
+    },
+    "25.3P": {
+      "nome": "primeira_instrucao",
+      /* "description": "1ª INSTRUÇÃO DE COBRANÇA", */
+      "posicao_inicio": 157,
+      "posicao_fim": 158,
+      "formato": "alfa",
+    },
+    "26.3P": {
+      "nome": "segunda_instrucao",
+      /* "description": "2ª INSTRUÇÃO DE COBRANÇA", */
+      "posicao_inicio": 159,
+      "posicao_fim": 160,
+      "formato": "alfa",
+    },
+    "27.3P": {
+      /* VERIFICAR */
+      "nome": "juros_mora_taxa_dia",
+      /* "description": "VALOR DE MORA POR DIA DE ATRASO", */
+      "posicao_inicio": 161,
+      "posicao_fim": 173,
+      "formato": "num",
+    },
+    "28.3P": {
+      "nome": "data_limite_desconto",
+      /* "description": "DATA LIMITE PARA CONCESSÃO DE DESCONTO", */
+      "posicao_inicio": 174,
+      "posicao_fim": 179,
+      "formato": "num",
+    },
+    "29.3P": {
+      "nome": "valor_desconto",
+      /* "description": "VALOR DO DESCONTO A SER CONCEDIDO", */
+      "posicao_inicio": 180,
+      "posicao_fim": 192,
+      "formato": "num",
+    },
+    "30.3P": {
+      "nome": "valor_iof",
+      /* "description": "VALOR DO I.O.F. RECOLHIDO P/ NOTAS SEGURO", */
+      "posicao_inicio": 193,
+      "posicao_fim": 205,
+      "formato": "num",
+    },
+    "31.3P": {
+      "nome": "valor_abatimento",
+      /* "description": "VALOR DO ABATIMENTO A SER CONCEDIDO", */
+      "posicao_inicio": 206,
+      "posicao_fim": 218,
+      "formato": "num",
+    },
+    "32.3P": {
+      "nome": "sacado_inscricao_tipo",
+      /* "description": "IDENTIFICAÇÃO DO TIPO DE INSCRIÇÃO/PAGADOR", */
+      "posicao_inicio": 219,
+      "posicao_fim": 220,
+      "formato": "num",
+    },
+    "33.3P": {
+      "nome": "sacado_inscricao_numero",
+      /* "description": "Nº DE INSCRIÇÃO DO PAGADOR (CPF/CNPJ)", */
+      "posicao_inicio": 221,
+      "posicao_fim": 234,
+      "formato": "num",
+    },
+    "34.3P": {
+      "nome": "sacado_nome",
+      /* "description": "sacado_nome", */
+      "posicao_inicio": 235,
+      "posicao_fim": 264,
+      "formato": "alfa",
+    },
+    "35.3P": {
+      "nome": "brancos",
+      /* "description": "COMPLEMENTO DE REGISTRO", */
+      "posicao_inicio": 265,
+      "posicao_fim": 274,
+      "formato": "alfa",
+    },
+    "36.3P": {
+      "nome": "sacado_endereco",
+      /* "description": "RUA, NÚMERO E COMPLEMENTO DO PAGADOR", */
+      "posicao_inicio": 275,
+      "posicao_fim": 314,
+      "formato": "alfa",
+    },
+    "37.3P": {
+      "nome": "sacado_bairro",
+      /* "description": "BAIRRO DO PAGADOR", */
+      "posicao_inicio": 315,
+      "posicao_fim": 326,
+      "formato": "alfa",
+    },
+    "38.3P": {
+      "nome": "sacado_cep",
+      /* "description": "CEP DO PAGADOR", */
+      "posicao_inicio": 327,
+      "posicao_fim": 334,
+      "formato": "num",
+    },
+    "39.3P": {
+      "nome": "sacado_cidade",
+      /* "description": "CIDADE DO PAGADOR", */
+      "posicao_inicio": 335,
+      "posicao_fim": 349,
+      "formato": "X(15)",
+    },
+    "40.3P": {
+      "nome": "sacado_uf",
+      /* "description": "UF DO PAGADOR", */
+      "posicao_inicio": 350,
+      "posicao_fim": 351,
+      "formato": "alfa",
+    },
+    "41.3P": {
+      "nome": "sacador_avalista",
+      /* "description": "NOME DO SACADOR OU AVALISTA", */
+      "posicao_inicio": 352,
+      "posicao_fim": 381,
+      "formato": "alfa",
+    },
+    "42.3P": {
+      "nome": "BRANCOS",
+      /* "description": "COMPLEMENTO DO REGISTRO", */
+      "posicao_inicio": 382,
+      "posicao_fim": 385,
+      "formato": "alfa",
+    },
+    "43.3P": {
+      "nome": "juros_mora_data",
+      /* "description": "DATA DE MORA", */
+      "posicao_inicio": 386,
+      "posicao_fim": 391,
+      "formato": "num",
+    },
+    "44.3P": {
+      "nome": "PRAZO",
+      /* "description": "QUANTIDADE DE DIAS", */
+      "posicao_inicio": 392,
+      "posicao_fim": 393,
+      "formato": "num",
+    },
+    "45.3P": {
+      "nome": "brancos",
+      /* "description": "COMPLEMENTO DO REGISTRO", */
+      "posicao_inicio": 394,
+      "posicao_fim": 394,
+      "formato": "alfa",
+    },
+    "46.3P": {
+      "nome": "numero_sequencial_registro",
+      /* "description": "Nº SEQÜENCIAL DO REGISTRO NO ARQUIVO", */
+      "posicao_inicio": 395,
+      "posicao_fim": 400,
+      "formato": "num",
+    }
+  }
+}
