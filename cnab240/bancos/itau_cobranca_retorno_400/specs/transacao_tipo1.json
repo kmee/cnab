@@ -1,0 +1,297 @@
+{
+  "nome": "TransacaoTipo1",
+  "campos": {
+    "01.1": {
+      "nome": "identificacao_registro",
+      "posicao_inicio": 1,
+      "posicao_fim": 1,
+      "formato": "num",
+      "default": 1
+    },
+    "02.1": {
+      "nome": "cedente_inscricao_tipo",
+      "posicao_inicio": 2,
+      "posicao_fim": 3,
+      "formato": "num"
+    },
+    "03.1": {
+      "nome": "cedente_inscricao_numero",
+      "posicao_inicio": 4,
+      "posicao_fim": 17,
+      "formato": "num"
+    },
+    "04.1": {
+      "nome": "cedente_agencia",
+      "posicao_inicio": 18,
+      "posicao_fim": 21,
+      "formato": "num"
+    },
+    "05.1": {
+      "nome": "zeros",
+      "posicao_inicio": 22,
+      "posicao_fim": 23,
+      "formato": "num",
+      "default": 0
+    },
+    "06.1": {
+      "nome": "cedente_conta",
+      "posicao_inicio": 24,
+      "posicao_fim": 28,
+      "formato": "num"
+    },
+    "07.1": {
+      "nome": "cedente_conta_dv",
+      "posicao_inicio": 29,
+      "posicao_fim": 29,
+      "formato": "num"
+    },
+    "08.1": {
+      "nome": "brancos",
+      "posicao_inicio": 30,
+      "posicao_fim": 37,
+      "formato": "alfa"
+    },
+    "10.1": {
+      "nome": "identificacao_titulo_empresa",
+      "posicao_inicio": 38,
+      "posicao_fim": 62,
+      "formato": "alfa"
+    },
+    "11.1": {
+      "nome": "nosso_numero",
+      "posicao_inicio": 63,
+      "posicao_fim": 70,
+      "formato": "num"
+    },
+    "12.1": {
+      "nome": "brancos2",
+      "posicao_inicio": 71,
+      "posicao_fim": 82,
+      "formato": "alfa"
+    },
+    "13.1": {
+      "nome": "carteira_numero",
+      "posicao_inicio": 83,
+      "posicao_fim": 85,
+      "formato": "num"
+    },
+    "14.1": {
+      "nome": "nosso_numero2",
+      "posicao_inicio": 86,
+      "posicao_fim": 93,
+      "formato": "num"
+    },
+    "15.1": {
+      "nome": "dac_nossso_numero",
+      "posicao_inicio": 94,
+      "posicao_fim": 94,
+      "formato": "num"
+    },
+    "16.1": {
+      "nome": "brancos3",
+      "posicao_inicio": 95,
+      "posicao_fim": 107,
+      "formato": "alfa"
+    },
+    "17.1": {
+      "nome": "carteira_codigo",
+      "posicao_inicio": 108,
+      "posicao_fim": 108,
+      "formato": "alfa"
+    },
+    "18.1": {
+      "nome": "codigo_ocorrencia",
+      "posicao_inicio": 109,
+      "posicao_fim": 110,
+      "formato": "num"
+    },
+    "19.1": {
+      "nome": "data_ocorrencia",
+      "posicao_inicio": 111,
+      "posicao_fim": 116,
+      "formato": "num"
+    },
+    "20.1": {
+      "nome": "numero_documento",
+      "posicao_inicio": 117,
+      "posicao_fim": 126,
+      "formato": "alfa"
+    },
+    "21.1": {
+      "nome": "nosso_numero3",
+      "posicao_inicio": 127,
+      "posicao_fim": 137,
+      "formato": "num"
+    },
+    "22.1": {
+      "nome": "brancos4",
+      "posicao_inicio": 135,
+      "posicao_fim": 146,
+      "formato": "alfa"
+    },
+    "23.1": {
+      "nome": "vencimento",
+      "posicao_inicio": 147,
+      "posicao_fim": 152,
+      "formato": "num"
+    },
+    "24.1": {
+      "nome": "valor",
+      "posicao_inicio": 153,
+      "posicao_fim": 165,
+      "formato": "num",
+      "decimal": 2
+    },
+    "25.1": {
+      "nome": "codigo_banco",
+      "posicao_inicio": 166,
+      "posicao_fim": 168,
+      "formato": "num"
+    },
+    "26.1": {
+      "nome": "agencia_cobradora",
+      "posicao_inicio": 169,
+      "posicao_fim": 172,
+      "formato": "num"
+    },
+    "27.1": {
+      "nome": "dac_agencia_cobradora",
+      "posicao_inicio": 173,
+      "posicao_fim": 173,
+      "formato": "num"
+    },
+    "28.1": {
+      "nome": "especie",
+      "posicao_inicio": 174,
+      "posicao_fim": 175,
+      "formato": "num"
+    },
+    "29.1": {
+      "nome": "tarifa_cobranca",
+      "posicao_inicio": 176,
+      "posicao_fim": 188,
+      "formato": "num",
+      "decimais": 2
+    },
+    "30.1": {
+      "nome": "brancos5",
+      "posicao_inicio": 189,
+      "posicao_fim": 214,
+      "formato": "alfa"
+    },
+    "31.1": {
+      "nome": "valor_iof",
+      "posicao_inicio": 215,
+      "posicao_fim": 227,
+      "formato": "num",
+      "decimais": 2
+    },
+    "32.1": {
+      "nome": "valor_abatimento",
+      "posicao_inicio": 228,
+      "posicao_fim": 240,
+      "formato": "num",
+      "decimal": 2
+    },
+    "33.1": {
+      "nome": "valor_desconto",
+      "posicao_inicio": 241,
+      "posicao_fim": 253,
+      "formato": "num",
+      "decimal": 2
+    },
+    "34.1": {
+      "nome": "valor_principal",
+      "posicao_inicio": 254,
+      "posicao_fim": 266,
+      "formato": "num",
+      "decimais": 2
+    },
+    "35.1": {
+      "nome": "juros_mora_multa",
+      "posicao_inicio": 267,
+      "posicao_fim": 279,
+      "formato": "num",
+      "decimais": 2
+    },
+    "36.1": {
+      "nome": "outros_creditos",
+      "posicao_inicio": 280,
+      "posicao_fim": 292,
+      "formato": "num",
+      "decimais": 2
+    },
+    "37.1": {
+      "nome": "boleto_dda",
+      "posicao_inicio": 293,
+      "posicao_fim": 293,
+      "formato": "alfa"
+    },
+    "38.1": {
+      "nome": "brancos6",
+      "posicao_inicio": 294,
+      "posicao_fim": 295,
+      "formato": "alfa"
+    },
+    "39.1": {
+      "nome": "data_credito",
+      "posicao_inicio": 296,
+      "posicao_fim": 301,
+      "formato": "alfa"
+    },
+    "40.1": {
+      "nome": "instrucao_cancelada",
+      "posicao_inicio": 302,
+      "posicao_fim": 305,
+      "formato": "num"
+    },
+    "41.1": {
+      "nome": "brancos7",
+      "posicao_inicio": 306,
+      "posicao_fim": 311,
+      "formato": "alfa"
+    },
+    "42.1": {
+      "nome": "zeros",
+      "posicao_inicio": 312,
+      "posicao_fim": 324,
+      "formato": "num"
+    },
+    "43.1": {
+      "nome": "nome_pagador",
+      "posicao_inicio": 325,
+      "posicao_fim": 354,
+      "formato": "alfa"
+    },
+    "44.1": {
+      "nome": "brancos8",
+      "posicao_inicio": 355,
+      "posicao_fim": 377,
+      "formato": "alfa"
+    },
+    "45.1": {
+      "nome": "erros",
+      "posicao_inicio": 378,
+      "posicao_fim": 385,
+      "formato": "alfa"
+    },
+    "46.1": {
+      "nome": "brancos9",
+      "posicao_inicio": 386,
+      "posicao_fim": 392,
+      "formato": "alfa"
+    },
+    "47.1": {
+      "nome": "codigo_liquidacao",
+      "posicao_inicio": 393,
+      "posicao_fim": 394,
+      "formato": "alfa"
+    },
+    "48.1": {
+      "nome": "num_seq_registro",
+      "posicao_inicio": 395,
+      "posicao_fim": 400,
+      "formato": "num"
+    }
+  }
+}
