@@ -177,8 +177,25 @@ class RegistroBase(object):
             elif campo.formato == 'num':
                 try:
                     campo.valor = int(valor)
-                except ValueError:
-                    raise errors.TipoError(campo, valor)
+                except ValueError as e:
+                    try:
+                        raise errors.TipoError(campo, valor)
+                    except:
+                        raise Exception(
+                            '%s\n'
+                            '\nCampo: %s'
+                            '\nInicio: %s'
+                            '\nFim: %s'
+                            '\nFormato Esperado: %s'
+                            '\nValor(Formato) Encontrado: %s(%s)' % (
+                                str(e),
+                                campo.nome,
+                                campo.inicio,
+                                campo.fim,
+                                campo.formato,
+                                valor,
+                                type(valor).__name__
+                            ))
             else:
                 campo.valor = valor
 
